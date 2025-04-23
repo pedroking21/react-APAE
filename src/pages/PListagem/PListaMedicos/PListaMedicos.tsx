@@ -27,4 +27,4 @@ function PListagemMedicos(): JSX.Element {
 }
 
 // Exporta o componente para uso em outras partes do projeto
-export default PListagemMedicos;
+export default PListagemMedicos; 
