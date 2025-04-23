@@ -5,7 +5,7 @@ import { JSX } from 'react';
 import Cabecalho from "../../../components/Cabecalho/Cabecalho";
 
 // Importa o componente que renderiza a tabela de livros
-import TabelaLivro from '../../../components/Tabelas/TabelaMedico/TabelaMedico';
+import TabelaMedico from '../../../components/Tabelas/TabelaMedico/TabelaMedico';
 
 // Importa o componente de rodapé da aplicação
 import Rodape from "../../../components/Rodape/Rodape";
@@ -18,7 +18,7 @@ function PListagemMedicos(): JSX.Element {
             <Cabecalho />
 
             {/* Renderiza a tabela com a lista de livros */}
-            <TabelaLivro />
+            <TabelaMedico />
 
             {/* Renderiza o rodapé da página */}
             <Rodape />

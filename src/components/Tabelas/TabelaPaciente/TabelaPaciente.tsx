@@ -81,16 +81,7 @@ function TabelaPaciente(): JSX.Element {
                 />
 
                 {/* Coluna personalizada para exibir o celular formatado */}
-                <Column
-                    field="celular"
-                    header="Celular"
-                    style={{ width: '15%' }}
-                    body={(rowData) => {
-                        const celular = rowData.celular?.replace(/\D/g, '');
-                        if (!celular || celular.length < 10) return celular;
-                        return celular.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/, '($1) $2 $3-$4');
-                    }}
-                />
+                
             </DataTable>
         </main>
     );

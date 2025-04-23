@@ -3,28 +3,31 @@ import { APP_ROUTES } from './appConfig';
 import PHome from './pages/PHome/PHome';
 import PLogin from './pages/PLogin/PLogin';
 import PListaPacientes from './pages/PListagem/PListaPacientes/PListaPacientes';
-import PListaEmprestimos from './pages/PListagem/PListaEmprestimos/PListaEmprestimos';
-import PListagemLivros from './pages/PListagem/PListaMedicos/PListaMedicos';
+import PListaConsultas from './pages/PListagem/PListaConsultas/PListaConsultas';
+import PListagemMedicos from './pages/PListagem/PListaMedicos/PListaMedicos';
 
 /**
- * Componente que irá lidar com todas as rotas da aplicação
- * @returns Um componente web para lidar com as rotas
+ * Componente que define e organiza todas as rotas da aplicação
+ * @returns As rotas definidas dentro de um BrowserRouter
  */
 function AppRoutes() {
     return (
         <BrowserRouter>
             <Routes>
-                {/* Quando a rota representada pela variável ROUTE_HOME é acessada, renderiza a página PHome */}
+                {/* Rota para a página inicial */}
                 <Route path={APP_ROUTES.ROUTE_HOME} element={<PHome />} />
-                {/* Quando a rota representada pela variável ROUTE_LOGIN é acessada, renderiza a página PLogin */}
+
+                {/* Rota para a página de login */}
                 <Route path={APP_ROUTES.ROUTE_LOGIN} element={<PLogin />} />
 
-                {/* Quando a rota representada pela variável ROUTE_LISTAGEM_PACIENTES é acessada, renderiza a página PListaAlunos */}
+                {/* Rota para a listagem de pacientes */}
                 <Route path={APP_ROUTES.ROUTE_LISTAGEM_PACIENTES} element={<PListaPacientes />} />
-                {/* Quando a rota representada pela variável ROUTE_LISTAGEM_EMPRESTIMOS é acessada, renderiza a página PListaEmprestimos */}
-                <Route path={APP_ROUTES.ROUTE_LISTAGEM_EMPRESTIMOS} element={<PListaEmprestimos />} />
-                {/* Quando a rota representada pela variável ROUTE_LISTAGEM_LIVROS é acessada, renderiza a página PListagemLivros */}
-                <Route path={APP_ROUTES.ROUTE_LISTAGEM_LIVROS} element={<PListagemLivros />} />
+
+                {/* Rota para a listagem de consultas */}
+                <Route path={APP_ROUTES.ROUTE_LISTAGEM_CONSULTAS} element={<PListaConsultas />} />
+
+                {/* Rota para a listagem de médicos */}
+                <Route path={APP_ROUTES.ROUTE_LISTAGEM_MEDICOS} element={<PListagemMedicos />} />
             </Routes>
         </BrowserRouter>
     );

@@ -12,6 +12,8 @@
 .imgLogo,
 .imgLogo img {
     height: 100%;
+    border-radius: 50%; /* ou outro valor como 10px, se quiser só levemente arredondado */
+    overflow: hidden; /* garante que a imagem respeite o border-radius */
 }
 
 .cabecalho a {

@@ -9,8 +9,8 @@ export const APP_ROUTES = {
     ROUTE_LOGIN: '/login',
 
     ROUTE_LISTAGEM_PACIENTES: '/pacientes',
-    ROUTE_LISTAGEM_EMPRESTIMOS: '/emprestimos',
-    ROUTE_LISTAGEM_LIVROS: '/livros',
+    ROUTE_LISTAGEM_CONSULTAS: '/consultas',
+    ROUTE_LISTAGEM_MEDICOS: '/medicos',
 }
 
 /**

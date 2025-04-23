@@ -48,7 +48,7 @@ class MedicoRequests {
             return null;
         } catch (error) {
             // Caso ocorra algum erro (ex: servidor fora do ar), exibe no console
-            console.error(`Erro ao fazer a consulta de livros: ${error}`);
+            console.error(`Erro ao fazer a consulta de medicos: ${error}`);
 
             // Retorna null para indicar que a operação falhou
             return null;

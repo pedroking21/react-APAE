@@ -39,7 +39,7 @@ function TabelaMedico(): JSX.Element {
     return (
         <main>
             {/* Título da tabela com classe personalizada */}
-            <h1 className={estilo['header-tabela-medicos*']}>Lista de Medicos</h1>
+            <h1 className={estilo['header-tabela-medicos']}>Lista de Medicos</h1>
 
             {/* Componente DataTable da PrimeReact, responsável por exibir os dados em forma de tabela */}
             <DataTable

@@ -5,20 +5,20 @@ import { JSX } from 'react';
 import Cabecalho from "../../../components/Cabecalho/Cabecalho";
 
 // Importa o componente da tabela que lista os empréstimos
-import TabelaEmprestimo from '../../../components/Tabelas/TabelaEmprestimo/TabelaEmprestimo';
+import TabelaConsulta from '../../../components/Tabelas/TabelaConsulta/TabelaConsulta';
 
 // Importa o componente de rodapé
 import Rodape from "../../../components/Rodape/Rodape";
 
 // Componente funcional que representa a página de listagem de empréstimos
-function PListaEmprestimos(): JSX.Element {
+function PListaConsultas(): JSX.Element {
     return (
         <div className="pagina-grid">
             {/* Renderiza o cabeçalho da página */}
             <Cabecalho />
 
             {/* Renderiza a tabela com a lista de empréstimos */}
-            <TabelaEmprestimo />
+            <TabelaConsulta />
 
             {/* Renderiza o rodapé da página */}
             <Rodape />
@@ -27,4 +27,4 @@ function PListaEmprestimos(): JSX.Element {
 }
 
 // Exporta o componente para uso em outras partes do projeto
-export default PListaEmprestimos;
+export default PListaConsultas;

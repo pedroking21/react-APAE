@@ -1,5 +1,5 @@
 /**
- * Interface para representar os dados do livro recebidos da API
+ * Interface para representar os dados do medico recebidos da API
  */
 interface MedicoDTO {
     nome: string,

@@ -1,18 +1,18 @@
 // Importa as configurações do servidor (como a URL base da API)
 import { SERVER_CFG } from "../appConfig";
-import EmprestimoDTO from "../interfaces/EmprestimoInterface";
+import ConsultaDTO from "../interfaces/ConsultaInterface";
 
 /**
  * Classe responsável por fazer as requisições da entidade Empréstimo.
  * Com essa classe, conseguimos listar, cadastrar, atualizar e remover empréstimos no sistema.
  */
-class EmprestimoRequests {
+class ConsultaRequests {
 
     private serverURL: string;                  // Variável para o endereço do servidor
-    private routeListaEmprestimos: string;      // Variável para a rota de listagem de empréstimos
-    private routeCadastraEmprestimo: string;    // Variável para a rota de cadastro de empréstimo
-    private routeAtualizaEmprestimo: string;    // Variável para a rota de atualiação de aluno
-    private routeRemoveEmprestimo: string;      // Variável para a rota de remoção do aluno
+    private routeListaConsultas: string;      // Variável para a rota de listagem de empréstimos
+    private routeCadastraConsulta: string;    // Variável para a rota de cadastro de empréstimo
+    private routeAtualizaConsulta: string;    // Variável para a rota de atualiação de aluno
+    private routeRemoveConsulta: string;      // Variável para a rota de remoção do aluno
 
     /**
      * O construtor é executado automaticamente quando a classe é instanciada.
@@ -20,28 +20,28 @@ class EmprestimoRequests {
      */
     constructor() {
         this.serverURL = SERVER_CFG.SERVER_URL;               // Endereço do servidor web
-        this.routeListaEmprestimos = '/lista/emprestimos';    // Rota para buscar todos os empréstimos
-        this.routeCadastraEmprestimo = '/novo/emprestimo';    // Rota para cadastrar um novo empréstimo
-        this.routeAtualizaEmprestimo = '/atualiza/emprestimo';// Rota para atualizar um empréstimo existente
-        this.routeRemoveEmprestimo = '/remove/emprestimo';    // Rota para remover um empréstimo
+        this.routeListaConsultas = '/listar/consulta';    // Rota para buscar todos os empréstimos
+        this.routeCadastraConsulta = '/cadastro/consulta';    // Rota para cadastrar um novo empréstimo
+        this.routeAtualizaConsulta = '/atualizar/consulta/:idConsulta';// Rota para atualizar um empréstimo existente
+        this.routeRemoveConsulta = '/remover/consulta/:idConsulta';    // Rota para remover um empréstimo
     }
 
     /**
      * Método assíncrono que faz uma requisição GET para a API buscando todos os empréstimos cadastrados.
      * @returns Um objeto JSON contendo a lista de empréstimos, ou null em caso de erro
      */
-    async listarEmprestimos(): Promise<EmprestimoDTO | null> {
+    async listarConsultas(): Promise<ConsultaDTO | null> {
         try {
             // Envia a requisição para a rota de listagem de empréstimos
-            const respostaAPI = await fetch(`${this.serverURL}${this.routeListaEmprestimos}`);
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeListaConsultas}`);
 
             // Verifica se a resposta foi bem-sucedida (status HTTP 200-299)
             if (respostaAPI.ok) {
                 // Converte a resposta em JSON
-                const listaDeEmprestimos: EmprestimoDTO = await respostaAPI.json();
+                const listaDeConsultas: ConsultaDTO = await respostaAPI.json();
 
                 // Retorna a lista obtida
-                return listaDeEmprestimos;
+                return listaDeConsultas;
             }
 
             // retorna um valor nulo caso o servidor não envie a resposta
@@ -57,4 +57,4 @@ class EmprestimoRequests {
 }
 
 // Exporta a classe já instanciada, pronta para ser utilizada em outras partes do sistema
-export default new EmprestimoRequests();
+export default new ConsultaRequests();

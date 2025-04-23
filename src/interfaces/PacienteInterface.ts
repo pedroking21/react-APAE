@@ -1,5 +1,5 @@
 /**
- * Interface para representar os dados do aluno recebidos da API
+ * Interface para representar os dados do paciente recebidos da API
  */
 interface PacienteDTO {
     nome: string,
