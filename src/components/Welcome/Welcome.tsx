@@ -11,14 +11,14 @@ function Welcome(): JSX.Element {
         <main className={estilo.principal}>
             {/* Mensagem de boas-vindas ao usuário */}
             <main className='margem'>
-            <p>MEDCLINIC</p>
+            <h1>MEDCLINIC</h1>
             </main>
             {/* Mensagem orientando o usuário a fazer login */}
             <main className='texto'>
-            <h1>Com humanização e </h1>
-            <h1>inteligência tecnológica </h1>
-            <h1>para cuidar com maior </h1>
-            <h1>qualidade do seu paciente</h1>
+            <p>Com humanização e </p>
+            <p>inteligência tecnológica </p>
+            <p>para cuidar com maior </p>
+            <p>qualidade do seu paciente</p>
             </main>
         </main>
     );

@@ -1,37 +1,26 @@
-.principal p {
-    text-align: left;
-
-}
-
-.texto {
-    padding: 50px 20px;/* Espaçamento interno para o texto não ficar grudado nas bordas */
-    max-width: 960px;/* Largura máxima para melhor leitura em telas maiores */
-    margin: 0 auto;/* Centraliza o bloco na página, se necessário */
-}
-
-.texto h1 {
-    font-size: 1.5em; /* Tamanho da fonte para o restante do texto */
-    line-height: 1.6; /* Espaçamento entre as linhas para melhor leitura */
-    color: #555; /* Cor do texto para a descrição */
-    margin-bottom: 10px; /* Espaçamento abaixo de cada linha de texto */
-}
-
-
-.principal p:first-child {
-    font-size: 2.8rem;
-
-    color: var(--cor-primaria);
-
-    margin: 10% 0;
-}
-
-.principal p:last-child {
-    font-size: 2rem;
-
-    color: var(--cor-primaria);
-}
-
-.margem  {
-    text-justify: inter-cluster;
-
-}
+.principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: calc(100vh - 120px); /* ocupa a tela inteira menos o menu (120px) */
+    padding: 40px;
+    background-color: #c7dbf4; /* azul claro */
+  }
+  
+  .margem {
+    margin-bottom: 20px;
+  }
+  
+  .margem h1 {
+    font-size: 80px;
+    font-weight: bold;
+    color: #000000;
+  }
+  
+  .texto p {
+    font-size: 70px;
+    color: #000000;
+    margin: 0px 0;
+    line-height: 1.4;
+  }
