@@ -1,10 +1,10 @@
 .principal {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     align-items: flex-start;
-    height: calc(100vh - 120px); /* ocupa a tela inteira menos o menu (120px) */
-    padding: 40px;
+    height: calc(100vh - 60px); /* ocupa a tela inteira menos o menu (120px) */
+    padding: 10px;
     background-color: #c7dbf4; /* azul claro */
   }
   
@@ -18,9 +18,10 @@
     color: #000000;
   }
   
-  .texto p {
+  .texto {
     font-size: 70px;
     color: #000000;
-    margin: 0px 0;
-    line-height: 1.4;
+    margin: 0% 0;
+    line-height: 1.;
+    align-items: center;
   }

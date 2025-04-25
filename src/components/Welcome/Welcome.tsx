@@ -9,11 +9,11 @@ function Welcome(): JSX.Element {
     return (
         // Elemento principal da página com classe de estilo personalizada
         <main className={estilo.principal}>
-            {/* Mensagem de boas-vindas ao usuário */}
             <main className='margem'>
             <h1>MEDCLINIC</h1>
             </main>
-            {/* Mensagem orientando o usuário a fazer login */}
+
+
             <main className='texto'>
             <p>Com humanização e </p>
             <p>inteligência tecnológica </p>
@@ -22,7 +22,9 @@ function Welcome(): JSX.Element {
             </main>
         </main>
     );
-}
+
+};
+      
 
 // Exporta o componente para que possa ser utilizado em outras partes do projeto
 export default Welcome;
