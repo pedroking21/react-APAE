@@ -1,6 +1,21 @@
 .principal p {
-    text-align: center;
+    text-align: left;
+
 }
+
+.texto {
+    padding: 50px 20px;/* Espaçamento interno para o texto não ficar grudado nas bordas */
+    max-width: 960px;/* Largura máxima para melhor leitura em telas maiores */
+    margin: 0 auto;/* Centraliza o bloco na página, se necessário */
+}
+
+.texto h1 {
+    font-size: 1.5em; /* Tamanho da fonte para o restante do texto */
+    line-height: 1.6; /* Espaçamento entre as linhas para melhor leitura */
+    color: #555; /* Cor do texto para a descrição */
+    margin-bottom: 10px; /* Espaçamento abaixo de cada linha de texto */
+}
+
 
 .principal p:first-child {
     font-size: 2.8rem;
@@ -14,4 +29,9 @@
     font-size: 2rem;
 
     color: var(--cor-primaria);
+}
+
+.margem  {
+    text-justify: inter-cluster;
+
 }
