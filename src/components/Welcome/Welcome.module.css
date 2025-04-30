@@ -32,6 +32,9 @@
   
   .texto p {
     font-size: 35px;
+  }
+  .texto {
+    font-size: 70px;
     color: #000000;
     margin: 0% 0;
     line-height: 1.;
