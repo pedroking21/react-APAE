@@ -43,7 +43,7 @@ function TabelaPaciente(): JSX.Element {
     }, []); // Array vazio garante que será executado apenas uma vez (montagem do componente)
 
     return (
-        <main>
+        <main className='logoo'>
             {/* Título da tabela com classe personalizada */}
             <h1 className={estilo['header-tabela-paciente']}>Lista de Pacientes</h1>
 
