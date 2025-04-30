@@ -68,7 +68,7 @@ function TabelaConsulta(): JSX.Element {
                 <Column field="salaAtendimento" header="Sala de Atendimento" />
                 <Column field="consultaStatus" header="Status da Consulta" />
                 <Column field="idPaciente" header="ID do Paciente" />
-                <Column field="IdMedico" header="ID do Médico" />
+                <Column field="idMedico" header="ID do Médico" />
                 <Column field="statusConsultaRegistro" header="Registro Confirmado" />
 
             </DataTable>

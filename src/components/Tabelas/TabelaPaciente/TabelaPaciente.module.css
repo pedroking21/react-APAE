@@ -3,6 +3,7 @@
 .header-tabela-paciente {
     text-align: center;
     margin: 2% auto;
+    color: --cor-primaria;
 }
 
 .data-table {
