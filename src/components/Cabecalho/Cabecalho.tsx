@@ -5,7 +5,7 @@ import { JSX } from 'react';
 import estilo from './Cabecalho.module.css';
 
 // Importa a imagem do logotipo da aplicação
-import logotipo from '../../assets/logo-medclinic.jpeg';
+import logotipo from '../../../public/assets/logo-medclinic.jpeg';
 
 // Importa as rotas configuradas da aplicação
 import { APP_ROUTES } from '../../appConfig';
@@ -20,6 +20,8 @@ function Cabecalho(): JSX.Element {
             <a href={APP_ROUTES.ROUTE_HOME} className={estilo.imgLogo}>
                 <img src={logotipo} alt="Logotipo da MedClinic" />
             </a>
+
+            <a href={APP_ROUTES.ROUTE_SOBRE_NOS}>Sobre Nós</a>
 
             {/* Link para a listagem de pacientes */}
             <a href={APP_ROUTES.ROUTE_LISTAGEM_PACIENTES}>Pacientes</a>

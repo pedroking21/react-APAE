@@ -10,16 +10,16 @@ function Welcome(): JSX.Element {
         // Elemento principal da página com classe de estilo personalizada
         <main className={estilo.principal}>
             {/* Mensagem de boas-vindas ao usuário */}
-            <main className={estilo.margem}>
+            <section className={estilo.margem}>
             <h1>MEDCLINIC</h1>
-            </main>
+            </section>
             {/* Mensagem orientando o usuário a fazer login */}
-            <main className={estilo.texto}>
+            <section className={estilo.texto}>
             <p>Com humanização e </p>
             <p>inteligência tecnológica </p>
             <p>para cuidar com maior </p>
             <p>qualidade do seu paciente</p>
-            </main>
+            </section>
         </main>
     );
 

@@ -43,7 +43,7 @@ function TabelaPaciente(): JSX.Element {
     }, []); // Array vazio garante que será executado apenas uma vez (montagem do componente)
 
     return (
-        <main className='logoo'>
+        <main className='container'> {/* Container principal do componente */}
             {/* Título da tabela com classe personalizada */}
             <h1 className={estilo['header-tabela-paciente']}>Lista de Pacientes</h1>
 
@@ -58,7 +58,8 @@ function TabelaPaciente(): JSX.Element {
                 currentPageReportTemplate="{first} de {last} total {totalRecords}" // Template do relatório da página
                 paginatorLeft={paginatorLeft} // Botão à esquerda da paginação
                 paginatorRight={paginatorRight} // Botão à direita da paginação
-                className={estilo['data-table']} // Classe CSS personalizada
+                className={`p-datatable ${estilo['data-table']}`}
+ // Classe CSS personalizada
             >
                 {/* Colunas da tabela, baseadas nos campos dos objetos de aluno */}
                 <Column field="nome" header="Nome" style={{ width: '15%' }} />

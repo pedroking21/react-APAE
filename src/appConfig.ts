@@ -6,6 +6,7 @@
  */
 export const APP_ROUTES = {
     ROUTE_HOME: '/',
+    ROUTE_SOBRE_NOS: '/sobre-nos',
     ROUTE_LOGIN: '/login',
 
     ROUTE_LISTAGEM_PACIENTES: '/pacientes',

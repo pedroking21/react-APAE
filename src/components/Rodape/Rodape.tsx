@@ -1,22 +1,34 @@
-// Importa o tipo JSX do React para tipar o retorno do componente
 import { JSX } from 'react';
-
-// Importa os estilos CSS específicos para o rodapé
 import estilo from './Rodape.module.css';
 
-// Declara o componente funcional Rodape que retorna um elemento JSX
 function Rodape(): JSX.Element {
-    return (
-        // Elemento <footer> que representa o rodapé da página, com classe de estilo personalizada
-        <footer className={estilo.rodape}>
-            {/* Texto com o nome do desenvolvedor ou entidade responsável */}
-            <p>Desenvolvido por: GRUPO APAE</p>
+  return (
+    <footer className={estilo.rodape}>
+      <div className={estilo.coluna}>
+        <h1>MEDCLINIC</h1>
+        <h5>CLÍNICA MÉDICA</h5>
+      </div>
 
-            {/* Texto de direitos autorais */}
-            <p>Copyright</p>
-        </footer>
-    );
+      <div className={estilo.colunaIcones}>
+        <div>
+        <img src="/public/assets/whatsapp.png" alt="whatsapp" />
+          <p>16 9234-1908</p>
+        </div>
+        <div>
+          <img src="public/assets/instagram.png" alt="instagram" />
+          <p>MedClinic</p>
+        </div>
+        <div>
+          <img src="public/assets/email.png" alt="email" />
+          <p>MedClinicCentroMedico@gmail.com</p>
+        </div>
+        <div>
+          <img src="public/assets/facebook.png" alt="facebook" />
+          <p>MedClinic Centro Médico</p>
+        </div>
+      </div>
+    </footer>
+  );
 }
 
-// Exporta o componente para que possa ser utilizado em outros arquivos do projeto
 export default Rodape;
