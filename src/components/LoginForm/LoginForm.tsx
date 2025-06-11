@@ -20,7 +20,7 @@ function LoginForm(): JSX.Element {
                 <label>
                     E-mail
                     <input
-                        type="email" // Define o tipo do input como e-mail
+                        type="text" // Define o tipo do input como e-mail
                         placeholder='Informe o seu e-mail' // Texto de dica para o usuário
                         className={estilo['input-email-login']} // Classe CSS personalizada
                     />
