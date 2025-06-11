@@ -34,6 +34,7 @@ function Cabecalho(): JSX.Element {
 
             {/* Link para a página de login */}
             <a href={APP_ROUTES.ROUTE_LOGIN}>Login</a>
+            
         </header>
     );
 }
