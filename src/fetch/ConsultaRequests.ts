@@ -20,7 +20,7 @@ class ConsultaRequests {
      */
     constructor() {
         this.serverURL = SERVER_CFG.SERVER_URL;               // Endereço do servidor web
-        this.routeListaConsultas = '/listar/consulta';    // Rota para buscar todos os empréstimos
+        this.routeListaConsultas = '/listar/consultas';    // Rota para buscar todos os empréstimos
         this.routeCadastraConsulta = '/cadastro/consulta';    // Rota para cadastrar um novo empréstimo
         this.routeAtualizaConsulta = '/atualizar/consulta/:idConsulta';// Rota para atualizar um empréstimo existente
         this.routeRemoveConsulta = '/remover/consulta/:idConsulta';    // Rota para remover um empréstimo
@@ -31,9 +31,15 @@ class ConsultaRequests {
      * @returns Um objeto JSON contendo a lista de empréstimos, ou null em caso de erro
      */
     async listarConsultas(): Promise<ConsultaDTO | null> {
+        // Obtém o token de autenticação do localStorage
+        const token = localStorage.getItem('token'); // Recupera o token de autenticação do armazenamento local
         try {
             // Envia a requisição para a rota de listagem de empréstimos
-            const respostaAPI = await fetch(`${this.serverURL}${this.routeListaConsultas}`);
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeListaConsultas}`, {
+                'headers' : {
+                    'x-access-token': token ?? '', // envia o token de autenticação no cabeçalho da requisição  
+                }
+            });
 
             // Verifica se a resposta foi bem-sucedida (status HTTP 200-299)
             if (respostaAPI.ok) {

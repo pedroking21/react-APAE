@@ -20,7 +20,7 @@ class MedicoRequests {
      */
     constructor() {
         this.serverURL = SERVER_CFG.SERVER_URL;         // Endereço do servidor web
-        this.routeListaMedicos = '/listar/medico';        // Define a rota para listar os livros
+        this.routeListaMedicos = '/listar/medicos';        // Define a rota para listar os livros
         this.routeCadastraMedico = '/cadastro/medico';        // Define a rota para cadastrar livros
         this.routeAtualizaMedico = '/atualizar/medico/:idMedico';    // Define a rota para atualizar livros
         this.routeRemoveMedico = '/remover/medico/:idMedico';        // Define a rota para remover livros
@@ -31,9 +31,15 @@ class MedicoRequests {
      * @returns Retorna um JSON com a lista de livros ou null em caso de erro
      */
     async listarMedicos(): Promise<MedicoDTO | null> {
+        // Obtém o token de autenticação do localStorage
+        const token = localStorage.getItem('token'); // Recupera o token de autenticação do armazenamento local
         try {
-            // Faz a requisição GET para a rota da lista de livros
-            const respostaAPI = await fetch(`${this.serverURL}${this.routeListaMedicos}`);
+            // Envia a requisição para a rota de listagem de empréstimos
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeListaMedicos}`, {
+                'headers' : {
+                    'x-access-token': token ?? '', // envia o token de autenticação no cabeçalho da requisição  
+                }
+            });
         
             // Verifica se a resposta da API foi bem-sucedida (status 200-299)
             if(respostaAPI.ok) {

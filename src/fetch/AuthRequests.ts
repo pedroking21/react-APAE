@@ -1,115 +1,107 @@
-/**
- * Tipos auxiliares
- */
-type LoginPayload = {
+interface LoginData {
     email: string;
     senha: string;
-};
-
-type Usuario = {
-    nome: string;
-    id_usuario: string;
-};
-
-type LoginResponse = {
+  }
+  
+  interface ServerResponse {
     auth: boolean;
     token: string;
-    usuario: Usuario;
-};
-
-/**
- * Classe para lidar com autenticação
- */
-class AuthRequests {
-    serverUrl: string;
-    routeLogin: string;
-
-    /**
-     * Construtor das rotas e do endereço do servidor
-     */
+    usuario: {
+      nome: string;
+      id_usuario: number;
+    };
+  }
+  
+  class AuthRequests {
+    private serverUrl: string;
+    private routeLogin: string;
+  
     constructor() {
-        this.serverUrl = 'http://localhost:3333';
-        this.routeLogin = '/login';
+      this.serverUrl = 'http://localhost:3333';
+      this.routeLogin = '/login';
     }
-
+  
     /**
      * Realiza a autenticação no servidor
-     * @param login - email e senha
-     * @returns **true** caso sucesso, lança erro caso erro
+     * @param login - dados de login com email e senha
+     * @returns true em caso de sucesso, ou lança erro
      */
-    async login(login: LoginPayload): Promise<boolean> {
-        try {
-            const response = await fetch(`${this.serverUrl}${this.routeLogin}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(login)
-            });
-
-            if (!response.ok) {
-                console.log('Erro na autenticação');
-                throw new Error('Falha no login');
-            }
-            const data: LoginResponse = await response.json();
-            console.log(data);
-
-            if (data.auth) {
-                this.persistToken(data.token, data.usuario.nome, data.usuario.id_usuario, data.auth);
-            }
-
-            return true;
-        } catch (error) {
-            console.error('Erro: ', error);
-            throw error;
+    async login(login: LoginData): Promise<boolean> {
+      try {
+        const response = await fetch(`${this.serverUrl}${this.routeLogin}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(login),
+        });
+  
+        if (!response.ok) {
+          console.log('Erro na autenticação');
+          throw new Error('Falha no login');
         }
+  
+        const data: ServerResponse = await response.json();
+        console.log(data);
+  
+        if (data.auth) {
+          this.persistToken(data.token, data.usuario.nome, data.usuario.id_usuario, data.auth);
+        }
+  
+        return true;
+      } catch (error) {
+        console.error('Erro:', error);
+        throw error;
+      }
     }
-
+  
     /**
      * Persiste o token no localStorage
      */
-    persistToken(token: string, username: string, idUsuario: string, isAuth: boolean): void {
-        localStorage.setItem('token', token);
-        localStorage.setItem('username', username);
-        localStorage.setItem('idUsuario', idUsuario);
-        localStorage.setItem('isAuth', String(isAuth));
+    persistToken(token: string, username: string, idUsuario: number, isAuth: boolean): void {
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
+      localStorage.setItem('idUsuario', idUsuario.toString());
+      localStorage.setItem('isAuth', isAuth.toString());
     }
-
+  
     /**
-     * Remove as informações do localStorage
+     * Remove os dados do localStorage e redireciona para /login
      */
     removeToken(): void {
-        localStorage.removeItem('token');
-        localStorage.removeItem('username');
-        localStorage.removeItem('idUsuario');
-        localStorage.removeItem('isAuth');
-        window.location.href = '/login';
+      localStorage.removeItem('token');
+      localStorage.removeItem('username');
+      localStorage.removeItem('idUsuario');
+      localStorage.removeItem('isAuth');
+      window.location.href = '/login';
     }
-
+  
     /**
-     * Verifica a validade do token
-     * @returns **true** caso token válido, **false** caso token inválido
+     * Verifica validade do token (expiração)
      */
     checkTokenExpiry(): boolean {
-        const token = localStorage.getItem('token');
-        if (token) {
-            try {
-                const payload = JSON.parse(atob(token.split('.')[1]));
-                const expiry: number = payload.exp;
-                const now: number = Math.floor(Date.now() / 1000);
-
-                if (expiry < now) {
-                    this.removeToken();
-                    return false;
-                }
-                return true;
-            } catch {
-                this.removeToken();
-                return false;
-            }
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          const payload = JSON.parse(atob(token.split('.')[1]));
+          const expiry = payload.exp as number;
+          const now = Math.floor(Date.now() / 1000);
+  
+          if (expiry < now) {
+            this.removeToken();
+            return false;
+          }
+  
+          return true;
+        } catch (e) {
+          console.error('Erro ao decodificar o token:', e);
+          this.removeToken();
+          return false;
         }
-        return false;
+      }
+  
+      return false;
     }
-}
-
-export default new AuthRequests();
+  }
+  
+  export default new AuthRequests();

@@ -1,43 +1,47 @@
-// Importa o tipo JSX do React para tipar corretamente o componente
-import { JSX } from 'react';
-
-// Importa os estilos CSS específicos do componente Cabecalho
 import estilo from './Cabecalho.module.css';
-
-// Importa a imagem do logotipo da aplicação
 import logotipo from '../../../src/assets/logo-medclinic.jpeg';
-
-// Importa as rotas configuradas da aplicação
 import { APP_ROUTES } from '../../appConfig';
+import AuthRequests from '../../fetch/AuthRequests';
+import { JSX, useEffect, useState } from 'react';
 
-// Componente funcional Cabecalho
 function Cabecalho(): JSX.Element {
+    // Estado para controlar se o usuário está autenticado
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    // Checa o token ao montar o componente para saber se está autenticado
+    useEffect(() => {
+        const tokenValido = AuthRequests.checkTokenExpiry();
+        setIsAuthenticated(tokenValido);
+    }, []);
+
+    // Função para logout, remove token e atualiza estado
+    const logout = () => {
+        AuthRequests.removeToken();
+        setIsAuthenticated(false);
+    };
+
     return (
-        // Elemento <header> com classe personalizada do CSS
         <header className={estilo.cabecalho}>
-            
-            {/* Link para a página inicial, com logotipo clicável */}
+            {/* Logo clicável que leva para home */}
             <a href={APP_ROUTES.ROUTE_HOME} className={estilo.imgLogo}>
                 <img src={logotipo} alt="Logotipo da MedClinic" />
             </a>
 
             <a href={APP_ROUTES.ROUTE_SOBRE_NOS}>Sobre Nós</a>
 
-            {/* Link para a listagem de pacientes */}
-            <a href={APP_ROUTES.ROUTE_LISTAGEM_PACIENTES}>Pacientes</a>
-
-            {/* Link para a listagem de médicos */}
-            <a href={APP_ROUTES.ROUTE_LISTAGEM_MEDICOS}>Médicos</a>
-
-            {/* Link para a listagem de consultas */}
-            <a href={APP_ROUTES.ROUTE_LISTAGEM_CONSULTAS}>Consultas</a>
-
-            {/* Link para a página de login */}
-            <a href={APP_ROUTES.ROUTE_LOGIN}>Login</a>
-            
+            {/* Renderização condicional do botão */}
+            {isAuthenticated ? (
+                <>
+                    <a href={APP_ROUTES.ROUTE_LISTAGEM_PACIENTES}>Pacientes</a>
+                    <a href={APP_ROUTES.ROUTE_LISTAGEM_MEDICOS}>Médicos</a>
+                    <a href={APP_ROUTES.ROUTE_LISTAGEM_CONSULTAS}>Consultas</a>
+                    <button onClick={logout}>SAIR</button>
+                </>
+            ) : (
+                <button onClick={() => (window.location.href = '/login')}>LOGIN</button>
+            )}
         </header>
     );
 }
 
-// Exporta o componente para uso externo
 export default Cabecalho;

@@ -12,6 +12,9 @@ export const APP_ROUTES = {
     ROUTE_LISTAGEM_PACIENTES: '/pacientes',
     ROUTE_LISTAGEM_CONSULTAS: '/consultas',
     ROUTE_LISTAGEM_MEDICOS: '/medicos',
+
+
+
 }
 
 /**

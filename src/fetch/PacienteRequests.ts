@@ -19,7 +19,7 @@ class PacienteRequests {
      */
     constructor() {
         this.serverURL = SERVER_CFG.SERVER_URL;     // Endereço do servidor web
-        this.routeListaPacientes = '/listar/Paciente';    // Rota configurada na API
+        this.routeListaPacientes = '/listar/pacientes';    // Rota configurada na API
         this.routeCadastraPaciente = '/cadastro/paciente';    // Rota configurada na API
         this.routeAtualizaPaciente = '/atualizar/paciente/:idPaciente'; // Rota configurada na API
         this.routeRemovePaciente = '/remover/paciente/:idPaciente';    // Rota configurada na API
@@ -30,9 +30,15 @@ class PacienteRequests {
      * @returns Retorna um JSON com a lista de alunos ou null em caso de erro
      */
     async listarPacientes(): Promise<PacienteDTO | null> {
+        // Obtém o token de autenticação do localStorage
+        const token = localStorage.getItem('token'); // Recupera o token de autenticação do armazenamento local
         try {
-            // faz a requisição no servidor
-            const respostaAPI = await fetch(`${this.serverURL}${this.routeListaPacientes}`);
+            // Envia a requisição para a rota de listagem de empréstimos
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeListaPacientes}`, {
+                'headers' : {
+                    'x-access-token': token ?? '', // envia o token de autenticação no cabeçalho da requisição  
+                }
+            });
 
             // Verifica se a resposta foi bem-sucedida (status HTTP 200-299)
             if (respostaAPI.ok) {
