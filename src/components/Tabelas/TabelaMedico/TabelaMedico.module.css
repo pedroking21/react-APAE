@@ -1,0 +1,107 @@
+/* TabelaMedico.module.css */
+
+.header-tabela-medicos {
+    text-align: center;
+    margin: 2% auto;
+    color: #0A3D62;
+}
+
+.data-table {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    margin: 5% auto 0 auto;
+    width: 90%;
+}
+
+.data-table :global(.p-datatable) {
+    border: none;
+}
+
+.data-table :global(.p-datatable-thead > tr > th) {
+    background-color: #0A3D62;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 2px solid #ffffff;
+}
+
+/* Define o fundo padrão na linha */
+.data-table :global(.p-datatable-tbody > tr) {
+    background-color: #0A3D62;
+}
+
+/* Remove o fundo fixo das células pra não sobrepor */
+.data-table :global(.p-datatable-tbody > tr > td) {
+    padding: 1rem;
+    border-bottom: 1px solid #4d4d4d;
+    color: #ffffff;
+    background-color: transparent;
+    /* ou tira essa linha */
+}
+
+/* Hover na linha */
+.data-table :global(.p-datatable-tbody > tr:hover) {
+    background-color: #005f97;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+
+.data-table :global(.p-paginator) {
+    padding: 1rem;
+    border-top: 1px solid #ddd;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    background-color: #0A3D62;
+    color: #ffffff;
+}
+
+.data-table :global(.p-dropdown) {
+    min-width: 80px;
+}
+
+.data-table :global(.p-paginator .p-paginator-pages .p-paginator-page.p-highlight) {
+    background-color: #b5bbbf;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+}
+
+.data-table :global(.p-paginator .p-paginator-element) {
+    margin: 0 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .data-table :global(.p-datatable) {
+        font-size: 0.85rem;
+    }
+
+    .data-table :global(.p-datatable-thead),
+    .data-table :global(.p-datatable-tbody) {
+        display: block;
+    }
+
+    .data-table :global(.p-datatable-tbody > tr) {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ffffff;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .data-table :global(.p-datatable-tbody > tr > td) {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .data-table :global(.p-datatable-tbody > tr > td::before) {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 1rem;
+    }
+}

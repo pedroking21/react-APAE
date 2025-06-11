@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+
+.principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    height: calc(100vh - 60px); /* ocupa a tela inteira menos o menu (120px) */
+    padding: 10px;
+    background-color: #c7dbf4; /* azul claro */
+  }
+  
+  .margem {
+    margin-bottom: 20px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Julius Sans One", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.margem h1 {
+  font-size: 90px;
+  font-weight: bold;
+  color: #000000;
+  padding-top: 50px; /* esse espaçamento fica dentro do h1 */
+}
+  
+  .texto p {
+    font-size: 70px;
+  
+  }
+  .texto {
+    font-size: 80px;
+    color: #000000;
+    margin: 6% 0;
+    line-height: 1.;
+    align-items: center;
+    margin-top: 0px;
+  }
