@@ -34,4 +34,5 @@ class UsuarioRequests {
     }
 }
 
+
 export default new UsuarioRequests();
