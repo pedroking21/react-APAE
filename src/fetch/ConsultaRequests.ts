@@ -8,6 +8,7 @@ import ConsultaDTO from "../interfaces/ConsultaInterface";
  */
 class ConsultaRequests {
 
+    
     private serverURL: string;                  // Variável para o endereço do servidor
     private routeListaConsultas: string;      // Variável para a rota de listagem de empréstimos
     private routeCadastraConsulta: string;    // Variável para a rota de cadastro de empréstimo
