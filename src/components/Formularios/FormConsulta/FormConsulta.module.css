@@ -1,0 +1,33 @@
+.sec-form-consulta {
+    margin: auto 0;
+}
+
+.sec-form-consulta h1 {
+    text-align: center;
+}
+
+.form-consulta {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto auto;
+}
+
+.form-consulta label {
+    display: flex;
+    flex-direction: column;
+    margin: 1% 0;
+}
+
+.form-consulta input {
+    margin-top: 0.5%;
+    height: 3vh;
+}
+
+.form-consulta input[type="submit"] {
+    height: 5vh;
+    border-radius: 8px;
+    background-color: var(--cor-primaria);
+    border: none;
+    font-size: 1.15rem;
+}

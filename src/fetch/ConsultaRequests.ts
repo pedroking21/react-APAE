@@ -61,6 +61,32 @@ class ConsultaRequests {
             return null;
         }
     }
+    
+    /**
+     * Envia os dados do formulário aluno para a API
+     * @param formConsulta Objeto com os valores do formulário
+     * @returns **true** se cadastro com sucesso, **false** se falha
+     */
+    async enviaFormularioConsulta(formConsulta: string): Promise<boolean> {
+        try {
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeCadastraConsulta}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: formConsulta
+            });
+
+            if(!respostaAPI.ok) {
+                throw new Error('Erro ao fazer requisição com o servidor.');
+            }
+
+            return true;
+        } catch (error) {
+            console.error(`Erro ao enviar o formulário. ${error}`);
+            return false;
+        }
+    }
 }
 
 // Exporta a classe já instanciada, pronta para ser utilizada em outras partes do sistema

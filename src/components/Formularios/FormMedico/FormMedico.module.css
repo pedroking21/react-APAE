@@ -1,0 +1,33 @@
+.sec-form-medico {
+    margin: auto 0;
+}
+
+.sec-form-medico h1 {
+    text-align: center;
+}
+
+.form-medico {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto auto;
+}
+
+.form-medico label {
+    display: flex;
+    flex-direction: column;
+    margin: 1% 0;
+}
+
+.form-medico input {
+    margin-top: 0.5%;
+    height: 3vh;
+}
+
+.form-medico input[type="submit"] {
+    height: 5vh;
+    border-radius: 8px;
+    background-color: var(--cor-primaria);
+    border: none;
+    font-size: 1.15rem;
+}

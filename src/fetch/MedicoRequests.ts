@@ -60,6 +60,32 @@ class MedicoRequests {
             return null;
         }
     }
+
+        /**
+     * Envia os dados do formulário aluno para a API
+     * @param formMedico Objeto com os valores do formulário
+     * @returns **true** se cadastro com sucesso, **false** se falha
+     */
+    async enviaFormularioMedico(formMedico: string): Promise<boolean> {
+        try {
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeCadastraMedico}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: formMedico
+            });
+
+            if(!respostaAPI.ok) {
+                throw new Error('Erro ao fazer requisição com o servidor.');
+            }
+
+            return true;
+        } catch (error) {
+            console.error(`Erro ao enviar o formulário. ${error}`);
+            return false;
+        }
+    }
 }
 
 // Exporta a classe já com um objeto instanciado para ser usado diretamente

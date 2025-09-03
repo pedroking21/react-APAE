@@ -1,0 +1,33 @@
+.sec-form-paciente {
+    margin: auto 0;
+}
+
+.sec-form-paciente h1 {
+    text-align: center;
+}
+
+.form-paciente {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto auto;
+}
+
+.form-paciente label {
+    display: flex;
+    flex-direction: column;
+    margin: 1% 0;
+}
+
+.form-paciente input {
+    margin-top: 0.5%;
+    height: 3vh;
+}
+
+.form-paciente input[type="submit"] {
+    height: 5vh;
+    border-radius: 8px;
+    background-color: var(--cor-primaria);
+    border: none;
+    font-size: 1.15rem;
+}
