@@ -1,69 +1,77 @@
 // Importa hooks e tipos do React
-import { JSX, useEffect, useState } from 'react'; 
+import { JSX, useEffect, useState } from 'react';
 
 // Importa os componentes da biblioteca PrimeReact
-import { DataTable } from 'primereact/datatable'; // Tabela responsiva com recursos como paginação e ordenação
-import { Column } from 'primereact/column'; // Representa uma coluna da tabela
-import { Button } from 'primereact/button'; // Botão estilizado da PrimeReact
+import { DataTable } from 'primereact/datatable'; 
+import { Column } from 'primereact/column';
+import { Button } from 'primereact/button';
 
-// Importa o serviço responsável pelas requisições relacionadas a livros
+// Importa o serviço responsável pelas requisições relacionadas a médicos
 import MedicoRequests from '../../../fetch/MedicoRequests';
 
 // Importa o arquivo CSS com estilos específicos para este componente
 import estilo from './TabelaMedico.module.css';
 import MedicoDTO from '../../../interfaces/MedicoInterface';
+import { APP_ROUTES } from '../../../appConfig';
 
-// Declara o componente funcional TabelaLivro
+/**
+ * Componente que exibe uma tabela com os dados dos médicos.
+ * Os dados são carregados da API assim que o componente é montado na tela.
+ */
 function TabelaMedico(): JSX.Element {
-    // Hook useState para armazenar a lista de livros
+    // Estado local para armazenar a lista de médicos
     const [medicos, setMedicos] = useState<MedicoDTO[]>([]);
 
-    // Botões personalizados para a paginação da tabela (utilizado pelo componente DataTable da lib PrimeReact)
+    // Botões personalizados para paginação
     const paginatorLeft = <Button type="button" icon="pi pi-refresh" text />;
     const paginatorRight = <Button type="button" icon="pi pi-download" text />;
 
-    // Hook useEffect para buscar os livros na primeira renderização do componente
+    // Hook useEffect: busca os médicos assim que o componente é montado
     useEffect(() => {
-        const fetchMedicos = async () => {   // função para fazer a consulta de livros
+        const fetchMedicos = async () => {
             try {
-                const listaDeMedicos = await MedicoRequests.listarMedicos(); // Chamada assíncrona à API
-                setMedicos(Array.isArray(listaDeMedicos) ? listaDeMedicos : []); // Atualiza o estado apenas se o retorno for um array
+                const listaDeMedicos = await MedicoRequests.listarMedicos();
+                setMedicos(Array.isArray(listaDeMedicos) ? listaDeMedicos : []);
             } catch (error) {
-                console.error(`Erro ao buscar medicos: ${error}`); // Exibe erro no console se a requisição falhar
+                console.error(`Erro ao buscar médicos: ${error}`);
             }
-        }
+        };
 
-        fetchMedicos(); // Executa a função de busca
-    }, []); // Array vazio garante que será executado apenas uma vez (montagem do componente)
+        fetchMedicos();
+    }, []);
 
     return (
         <main>
-            {/* Título da tabela com classe personalizada */}
-            <h1 className={estilo['header-tabela-medicos']}>Lista de Medicos</h1>
-
-            {/* Componente DataTable da PrimeReact, responsável por exibir os dados em forma de tabela */}
-            <DataTable
-                value={medicos} // Fonte de dados da tabela
-                paginator // Ativa paginação
-                rows={5} // Mostra 10 registros por página por padrão
-                rowsPerPageOptions={[5, 10, 25, 50]} // Opções que o usuário pode escolher
-                tableStyle={{ minWidth: '50rem' }} // Define um estilo mínimo para a tabela
-                paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink" // Layout dos controles de paginação
-                currentPageReportTemplate="{first} de {last} total {totalRecords}" // Texto que exibe o status da paginação
-                paginatorLeft={paginatorLeft} // Botão à esquerda da paginação
-                paginatorRight={paginatorRight} // Botão à direita da paginação
-                className={estilo['data-table']} // Classe CSS personalizada
+            {/* Título da tabela */}
+            <h1 className={estilo['header-tabela-medico']}>Lista de Médicos</h1>
+            <a
+                href={APP_ROUTES.ROUTE_CADASTRO_MEDICO}
+                className={estilo['anc-pag-cadastro']}
             >
-                {/* Colunas que representam os atributos de cada livro */}
+                CADASTRAR MÉDICO
+            </a>
+
+            {/* Tabela PrimeReact */}
+            <DataTable
+                value={medicos}
+                paginator
+                rows={5}
+                rowsPerPageOptions={[5, 10, 25, 50]}
+                tableStyle={{ minWidth: '50rem' }}
+                paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+                currentPageReportTemplate="{first} de {last} total {totalRecords}"
+                paginatorLeft={paginatorLeft}
+                paginatorRight={paginatorRight}
+                className={estilo['data-table']}
+            >
                 <Column field="nome" header="Nome" style={{ width: '20%' }} />
                 <Column field="especialidade" header="Especialidade" style={{ width: '20%' }} />
                 <Column field="crm" header="CRM" style={{ width: '15%' }} />
                 <Column field="telefone" header="Telefone" style={{ width: '15%' }} />
-                <Column field="email" header="Email" style={{ width: '20%' }} />
+                <Column field="email" header="E-mail" style={{ width: '20%' }} />
             </DataTable>
         </main>
     );
 }
 
-// Exporta o componente para ser utilizado em outros arquivos
 export default TabelaMedico;

@@ -40,7 +40,6 @@ function FormPaciente() {
                             name="nome"
                             id="nome"
                             required
-                            minLength={3}
                             onChange={(e) => handleChange("nome", e.target.value)}
                         />
                     </label>
@@ -52,7 +51,6 @@ function FormPaciente() {
                             name="cpf"
                             id="cpf"
                             required
-                            minLength={3}
                             onChange={(e) => handleChange("cpf", e.target.value)}
                         />
                     </label>
@@ -63,7 +61,6 @@ function FormPaciente() {
                             type="text"
                             name="telefone"
                             id="telefone"
-                            minLength={6}
                             onChange={(e) => handleChange("telefone", e.target.value)}
                         />
                     </label>
@@ -74,7 +71,6 @@ function FormPaciente() {
                             type="text"
                             name="email"
                             id="email"
-                            minLength={11}
                             onChange={(e) => handleChange("email", e.target.value)}
                         />
                     </label>
@@ -95,8 +91,6 @@ function FormPaciente() {
                             type="text"
                             name="endereco"
                             id="endereco"
-                            minLength={10}
-                            maxLength={13}
                             onChange={(e) => handleChange("endereco", e.target.value)}
                         />
                     </label>

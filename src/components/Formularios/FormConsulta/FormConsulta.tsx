@@ -4,6 +4,7 @@ import ConsultaRequests from '../../../fetch/ConsultaRequests';
 
 function FormConsulta() {
     const [formData, setFormData] = useState({
+        nome: '',
         data: new Date(),
         hora: '',
         diagnostico: '',
@@ -20,7 +21,7 @@ function FormConsulta() {
     };
 
     // função para recuperar dados do formulário e enviar para a requisição
-    const handleSubmit = async (formData: { data: Date; hora: string; diagnostico: string; receita: string; salaAtendimento: string; consultaStatus: string; idPaciente: number; idMedico: number}) => {
+    const handleSubmit = async (formData: {nome: string; data: Date; hora: string; diagnostico: string; receita: string; salaAtendimento: string; consultaStatus: string; idPaciente: number; idMedico: number}) => {
         const resposta = await ConsultaRequests.enviaFormularioConsulta(JSON.stringify(formData));
         if(resposta) {
             alert('consulta cadastrado com sucesso.');
@@ -36,13 +37,23 @@ function FormConsulta() {
                     className={estilo['form-consulta']}
                 >
                     <label htmlFor="">
+                        Nome
+                        <input
+                            type="text"
+                            name="nome"
+                            id="nome"
+                            required
+                            onChange={(e) => handleChange("nome", e.target.value)}
+                        />
+                    </label>
+
+                    <label htmlFor="">
                         Data
                         <input
                             type="date"
                             name="data"
                             id="data"
                             required
-                            minLength={3}
                             onChange={(e) => handleChange("data", e.target.value)}
                         />
                     </label>
@@ -54,7 +65,6 @@ function FormConsulta() {
                             name="hora"
                             id="hora"
                             required
-                            minLength={3}
                             onChange={(e) => handleChange("hora", e.target.value)}
                         />
                     </label>
@@ -75,7 +85,6 @@ function FormConsulta() {
                             type="text"
                             name="receita"
                             id="receita"
-                            minLength={6}
                             onChange={(e) => handleChange("receita", e.target.value)}
                         />
                     </label>
@@ -86,7 +95,6 @@ function FormConsulta() {
                             type="text"
                             name="salaAtendimento"
                             id="salaAtendimento"
-                            minLength={11}
                             onChange={(e) => handleChange("salaAtendimento", e.target.value)}
                         />
                     </label>
@@ -97,8 +105,6 @@ function FormConsulta() {
                             type="text"
                             name="consultaStatus"
                             id="consultaStatus"
-                            minLength={10}
-                            maxLength={13}
                             onChange={(e) => handleChange("consultaStatus", e.target.value)}
                         />
                     </label>
@@ -110,7 +116,6 @@ function FormConsulta() {
                             type="number"
                             name="idPaciente"
                             id="idPaciente"
-                            minLength={11}
                             onChange={(e) => handleChange("idPaciente", e.target.value)}
                         />
                     </label>
@@ -122,7 +127,6 @@ function FormConsulta() {
                             type="number"
                             name="idMedico"
                             id="idMedico"
-                            minLength={11}
                             onChange={(e) => handleChange("idMedico", e.target.value)}
                         />
                     </label>

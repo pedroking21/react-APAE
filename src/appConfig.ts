@@ -13,6 +13,10 @@ export const APP_ROUTES = {
     ROUTE_LISTAGEM_CONSULTAS: '/consultas',
     ROUTE_LISTAGEM_MEDICOS: '/medicos',
 
+    ROUTE_CADASTRO_PACIENTE: '/cadastrar/paciente',
+    ROUTE_CADASTRO_CONSULTA: '/cadastrarConsulta',
+    ROUTE_CADASTRO_MEDICO: '/cadastrar/medico', 
+
 
 
 }

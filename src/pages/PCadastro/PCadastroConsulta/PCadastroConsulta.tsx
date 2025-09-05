@@ -2,7 +2,7 @@ import Cabecalho from "../../../components/Cabecalho/Cabecalho";
 import FormConsulta from "../../../components/Formularios/FormConsulta/FormConsulta";
 import Rodape from "../../../components/Rodape/Rodape";
 
-function PCadastroAluno() {
+function PCadastroConsulta() {
     return (
         <div className="pagina-grid">
             {/* Renderiza o cabeçalho da página */}
@@ -17,4 +17,4 @@ function PCadastroAluno() {
     );
 }
 
-export default PCadastroAluno;
+export default PCadastroConsulta;

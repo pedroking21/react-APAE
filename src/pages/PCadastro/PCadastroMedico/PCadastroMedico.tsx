@@ -2,7 +2,7 @@ import Cabecalho from "../../../components/Cabecalho/Cabecalho";
 import FormMedico from "../../../components/Formularios/FormMedico/FormMedico";
 import Rodape from "../../../components/Rodape/Rodape";
 
-function PCadastroAluno() {
+function PCadastroMedico() {
     return (
         <div className="pagina-grid">
             {/* Renderiza o cabeçalho da página */}
@@ -17,4 +17,4 @@ function PCadastroAluno() {
     );
 }
 
-export default PCadastroAluno;
+export default PCadastroMedico;

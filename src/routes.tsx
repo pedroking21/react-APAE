@@ -7,6 +7,9 @@ import PListaConsultas from './pages/PListagem/PListaConsultas/PListaConsultas';
 import PListagemMedicos from './pages/PListagem/PListaMedicos/PListaMedicos';
 import PLogin from './pages/PLogin/PLogin';
 import ProtectedRoute from './components/Rotas/ProtectedRoute';
+import PCadastroConsulta from './pages/PCadastro/PCadastroConsulta/PCadastroConsulta';
+import PCadastroPaciente from './pages/PCadastro/PCadastroMedico/PCadastroMedico';
+import PCadastroMedico from './pages/PCadastro/PCadastroMedico/PCadastroMedico';
 
 
 /**
@@ -32,6 +35,12 @@ function AppRoutes() {
                 <Route path={APP_ROUTES.ROUTE_LISTAGEM_CONSULTAS} element={<ProtectedRoute element={PListaConsultas} />} />
                 {/* Rota para a listagem de médicos */}
                 <Route path={APP_ROUTES.ROUTE_LISTAGEM_MEDICOS} element={<ProtectedRoute element={PListagemMedicos} />} /> 
+
+                <Route path={APP_ROUTES.ROUTE_CADASTRO_CONSULTA} element={<ProtectedRoute element={PCadastroConsulta} />} /> 
+
+                <Route path={APP_ROUTES.ROUTE_CADASTRO_PACIENTE} element={<ProtectedRoute element={PCadastroPaciente} />} /> 
+
+                <Route path={APP_ROUTES.ROUTE_CADASTRO_MEDICO} element={<ProtectedRoute element= {PCadastroMedico} />} /> 
 
                 
 

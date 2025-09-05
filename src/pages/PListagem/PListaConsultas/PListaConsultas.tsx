@@ -20,6 +20,8 @@ function PListaConsultas(): JSX.Element {
             {/* Renderiza a tabela com a lista de empréstimos */}
             <TabelaConsulta />
 
+    
+
             {/* Renderiza o rodapé da página */}
             <Rodape />
         </div>
