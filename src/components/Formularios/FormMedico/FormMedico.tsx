@@ -7,7 +7,7 @@ function FormMedico() {
         nome: '',
         especialidade: '',
         crm: '',
-        telefone: 0,
+        telefone: '',
         email: ''
 
     });
@@ -18,7 +18,7 @@ function FormMedico() {
     };
 
     // função para recuperar dados do formulário e enviar para a requisição
-    const handleSubmit = async (formData: { nome: string; especialidade: string; crm: string; telefone: number; email: string; }) => {
+    const handleSubmit = async (formData: { nome: string; especialidade: string; crm: string; telefone: string; email: string; }) => {
         const resposta = await MedicoRequests.enviaFormularioMedico(JSON.stringify(formData));
         if(resposta) {
             alert('Medico cadastrado com sucesso.');
@@ -70,7 +70,7 @@ function FormMedico() {
                     <label htmlFor="">
                         Telefone
                         <input
-                            type="number"
+                            type="text"
                             name="telefone"
                             id="telefone"
                             minLength={6}
@@ -81,7 +81,7 @@ function FormMedico() {
                     <label htmlFor="">
                         E-mail
                         <input
-                            type="email"
+                            type="text"
                             name="email"
                             id="email"
                             minLength={11}
