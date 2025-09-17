@@ -66,12 +66,15 @@ class MedicoRequests {
      * @param formMedico Objeto com os valores do formulário
      * @returns **true** se cadastro com sucesso, **false** se falha
      */
+   // ...existing code...
     async enviaFormularioMedico(formMedico: string): Promise<boolean> {
+        const token = localStorage.getItem('token'); // Recupera o token de autenticação do armazenamento local
         try {
             const respostaAPI = await fetch(`${this.serverURL}${this.routeCadastraMedico}`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-access-token': `${token}`
                 },
                 body: formMedico
             });
@@ -87,6 +90,7 @@ class MedicoRequests {
         }
     }
 }
+// ...existing code...
 
 // Exporta a classe já com um objeto instanciado para ser usado diretamente
 export default new MedicoRequests();

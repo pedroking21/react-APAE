@@ -68,11 +68,13 @@ class ConsultaRequests {
      * @returns **true** se cadastro com sucesso, **false** se falha
      */
     async enviaFormularioConsulta(formConsulta: string): Promise<boolean> {
+        const token = localStorage.getItem('token'); // Recupera o token de autenticação do armazenamento local
         try {
             const respostaAPI = await fetch(`${this.serverURL}${this.routeCadastraConsulta}`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-access-token': token ?? ''
                 },
                 body: formConsulta
             });
