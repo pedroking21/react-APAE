@@ -17,9 +17,9 @@
     "pg": "^8.16.0",
     "primereact": "^10.9.6",
     "prompt-sync": "^4.2.0",
-    "react": "^19.1.0",
+    "react": "^19.1.1",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^19.1.0",
+    "react-dom": "^19.1.1",
     "react-router-dom": "^7.4.1",
     "typescript-require": "^0.3.0"
   },

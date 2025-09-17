@@ -64,11 +64,13 @@ class PacienteRequests {
      * @returns **true** se cadastro com sucesso, **false** se falha
      */
     async enviaFormularioPaciente(formPaciente: string): Promise<boolean> {
+        const token = localStorage.getItem('token'); // Recupera o token de autenticação do armazenamento local
         try {
             const respostaAPI = await fetch(`${this.serverURL}${this.routeCadastraPaciente}`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-access-token': `${token}`
                 },
                 body: formPaciente
             });

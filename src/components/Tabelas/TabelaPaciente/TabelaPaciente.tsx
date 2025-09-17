@@ -12,6 +12,8 @@ import PacienteRequests from '../../../fetch/PacienteRequests'; // Importa a cla
 // Importa o arquivo CSS com estilos específicos para este componente
 import estilo from './TabelaPaciente.module.css'; // Importa os estilos específicos para este componente
 import PacienteDTO from '../../../interfaces/PacienteInterface';
+import { APP_ROUTES } from '../../../appConfig';
+
 
 /**
  * Componente que exibe uma tabela com os dados dos alunos.
@@ -46,7 +48,13 @@ function TabelaPaciente(): JSX.Element {
         <main className='container'> {/* Container principal do componente */}
             {/* Título da tabela com classe personalizada */}
             <h1 className={estilo['header-tabela-paciente']}>Lista de Pacientes</h1>
-
+            {/* Título da tabela com classe personalizada */}
+            <a
+                href={APP_ROUTES.ROUTE_CADASTRO_PACIENTE}
+                className={estilo['anc-pag-cadastro']}
+            >
+                CADASTRAR PACIENTE
+            </a>
             {/* Componente DataTable: renderiza a tabela com os dados dos alunos */}
             <DataTable
                 value={pacientes} // Define os dados que serão exibidos

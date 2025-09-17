@@ -8,7 +8,7 @@ import PListagemMedicos from './pages/PListagem/PListaMedicos/PListaMedicos';
 import PLogin from './pages/PLogin/PLogin';
 import ProtectedRoute from './components/Rotas/ProtectedRoute';
 import PCadastroConsulta from './pages/PCadastro/PCadastroConsulta/PCadastroConsulta';
-import PCadastroPaciente from './pages/PCadastro/PCadastroMedico/PCadastroMedico';
+import PCadastroPaciente from './pages/PCadastro/PCadastroPaciente/PCadastroPaciente';
 import PCadastroMedico from './pages/PCadastro/PCadastroMedico/PCadastroMedico';
 
 
