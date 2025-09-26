@@ -44,16 +44,20 @@ function TabelaConsulta(): JSX.Element {
     }, []);
 
     const deletar = async (consulta: ConsultaDTO) => {
-        const confirmar = window.confirm(`Deseja realmente deletar o paciente ${consulta.idConsulta} ${consulta.nome}?`);
-        if (confirmar && typeof consulta.idMedico === 'number') {
-            const removido = await ConsultaRequests.removerConsulta(consulta.idMedico);
+        const confirmar = window.confirm(`Deseja realmente deletar o paciente ${consulta.idConsulta} ${consulta.nome}? ID: ${consulta.idConsulta}`);
+        if (
+            confirmar &&
+            typeof consulta.idMedico === 'number' &&
+            typeof consulta.idConsulta === 'number'
+        ) {
+            const removido = await ConsultaRequests.removerConsulta(consulta.idConsulta);
             if (removido) {
                 window.location.reload(); //atualizar a pagina
             } else {
                 alert('Erro ao remover o consulta');
             }
         } else if (confirmar) {
-            alert('ID do consulta inválido')
+            alert('ID do consulta inválido');
         }
     }
 

@@ -37,7 +37,7 @@ class MedicoRequests {
             // Envia a requisição para a rota de listagem de empréstimos
             const respostaAPI = await fetch(`${this.serverURL}${this.routeListaMedicos}`, {
                 'headers': {
-                    'x-access-token': token ?? '', // envia o token de autenticação no cabeçalho da requisição  
+                    'x-access-token': `${token}`, // envia o token de autenticação no cabeçalho da requisição  
                 }
             });
 

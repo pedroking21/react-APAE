@@ -24,7 +24,7 @@ class ConsultaRequests {
         this.routeListaConsultas = '/listar/consultas';    // Rota para buscar todos os empréstimos
         this.routeCadastraConsulta = '/cadastro/consulta';    // Rota para cadastrar um novo empréstimo
         this.routeAtualizaConsulta = '/atualizar/consulta/:idConsulta';// Rota para atualizar um empréstimo existente
-        this.routeRemoveConsulta = '/remover/consulta/:idConsulta';    // Rota para remover um empréstimo
+        this.routeRemoveConsulta = '/remover/consulta';    // Rota para remover um empréstimo
     }
 
     /**
@@ -91,8 +91,9 @@ class ConsultaRequests {
     }
     async removerConsulta(idConsulta: number): Promise<boolean> {
         const token = localStorage.getItem('token'); // recupera o token do localStorage
+        console.log(`${this.serverURL}${this.routeRemoveConsulta}/${idConsulta}`);
         try {
-            const respostaAPI = await fetch(`${this.serverURL}${this.routeRemoveConsulta}?idConsulta=${idConsulta}`, {
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeRemoveConsulta}/${idConsulta}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
