@@ -43,6 +43,20 @@ function TabelaConsulta(): JSX.Element {
         fetchConsultas(); // Executa a função de busca
     }, []);
 
+    const deletar = async (consulta: ConsultaDTO) => {
+        const confirmar = window.confirm(`Deseja realmente deletar o paciente ${consulta.idConsulta} ${consulta.nome}?`);
+        if (confirmar && typeof consulta.idMedico === 'number') {
+            const removido = await ConsultaRequests.removerConsulta(consulta.idMedico);
+            if (removido) {
+                window.location.reload(); //atualizar a pagina
+            } else {
+                alert('Erro ao remover o consulta');
+            }
+        } else if (confirmar) {
+            alert('ID do consulta inválido')
+        }
+    }
+
     return (
         <main>
             {/* Título da tabela com classe personalizada */}
@@ -82,6 +96,19 @@ function TabelaConsulta(): JSX.Element {
                 <Column field="idPaciente" header="ID do Paciente" />
                 <Column field="idMedico" header="ID do Médico" />
                 <Column field="statusConsultaRegistro" header="Registro Confirmado" />
+
+                <Column
+                    field="idConsulta"
+                    header="Ação"
+                    headerStyle={{ backgroundColor: 'var(--cor-primaria)', color: 'var(--font-color)' }}
+                    style={{ width: '15%', color: 'var(--font-color)' }}
+                    body={(rowData) => (
+                        <button
+                            style={{ width: '100%' }}
+                            onClick={() => deletar(rowData)}
+                        >Deletar</button>
+                    )}
+                />
             </DataTable>
         </main>
     );

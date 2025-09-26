@@ -85,6 +85,25 @@ class PacienteRequests {
             return false;
         }
     }
+        async removerPaciente(idPaciente: number): Promise<boolean> {
+        const token = localStorage.getItem('token'); // recupera o token do localStorage
+        try {
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeRemovePaciente}?idPaciente=${idPaciente}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token': `${token}`
+                }
+            });
+            if (!respostaAPI.ok) {
+                throw new Error('Erro ao fazer requisição à API.');
+            }
+            return true;
+        } catch (error) {
+            console.error(`Erro ao fazer solicitação. ${error}`);
+            return false;
+        }
+    }
 }
 
 // Exporta a classe já instanciando um objeto da mesma

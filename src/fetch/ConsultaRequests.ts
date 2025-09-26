@@ -8,7 +8,7 @@ import ConsultaDTO from "../interfaces/ConsultaInterface";
  */
 class ConsultaRequests {
 
-    
+
     private serverURL: string;                  // Variável para o endereço do servidor
     private routeListaConsultas: string;      // Variável para a rota de listagem de empréstimos
     private routeCadastraConsulta: string;    // Variável para a rota de cadastro de empréstimo
@@ -37,7 +37,7 @@ class ConsultaRequests {
         try {
             // Envia a requisição para a rota de listagem de empréstimos
             const respostaAPI = await fetch(`${this.serverURL}${this.routeListaConsultas}`, {
-                'headers' : {
+                'headers': {
                     'x-access-token': token ?? '', // envia o token de autenticação no cabeçalho da requisição  
                 }
             });
@@ -61,7 +61,7 @@ class ConsultaRequests {
             return null;
         }
     }
-    
+
     /**
      * Envia os dados do formulário aluno para a API
      * @param formConsulta Objeto com os valores do formulário
@@ -79,13 +79,32 @@ class ConsultaRequests {
                 body: formConsulta
             });
 
-            if(!respostaAPI.ok) {
+            if (!respostaAPI.ok) {
                 throw new Error('Erro ao fazer requisição com o servidor.');
             }
 
             return true;
         } catch (error) {
             console.error(`Erro ao enviar o formulário. ${error}`);
+            return false;
+        }
+    }
+    async removerConsulta(idConsulta: number): Promise<boolean> {
+        const token = localStorage.getItem('token'); // recupera o token do localStorage
+        try {
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeRemoveConsulta}?idConsulta=${idConsulta}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token': `${token}`
+                }
+            });
+            if (!respostaAPI.ok) {
+                throw new Error('Erro ao fazer requisição à API.');
+            }
+            return true;
+        } catch (error) {
+            console.error(`Erro ao fazer solicitação. ${error}`);
             return false;
         }
     }

@@ -2,6 +2,8 @@
  * Interface para representar uma consulta realizado por um paciente
  */
 interface ConsultaDTO {
+    idConsulta?: number,
+    nome: string,
     data: Date,
     hora: string,
     diagnostico: string,

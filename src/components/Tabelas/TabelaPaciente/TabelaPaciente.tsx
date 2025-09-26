@@ -44,6 +44,20 @@ function TabelaPaciente(): JSX.Element {
         fetchPacientes();  // Executa a função de busca
     }, []); // Array vazio garante que será executado apenas uma vez (montagem do componente)
 
+    const deletar = async (paciente: PacienteDTO) => {
+        const confirmar = window.confirm(`Deseja realmente deletar o paciente ${paciente.nome} ${paciente.cpf}?`);
+        if (confirmar && typeof paciente.idPaciente === 'number') {
+            const removido = await PacienteRequests.removerPaciente(paciente.idPaciente);
+            if (removido) {
+                window.location.reload(); //atualizar a pagina
+            } else {
+                alert('Erro ao remover o paciente');
+            }
+        } else if (confirmar) {
+            alert('ID do paciente inválido')
+        }
+    }
+
     return (
         <main className='container'> {/* Container principal do componente */}
             {/* Título da tabela com classe personalizada */}
@@ -67,7 +81,7 @@ function TabelaPaciente(): JSX.Element {
                 paginatorLeft={paginatorLeft} // Botão à esquerda da paginação
                 paginatorRight={paginatorRight} // Botão à direita da paginação
                 className={`p-datatable ${estilo['data-table']}`}
- // Classe CSS personalizada
+            // Classe CSS personalizada
             >
                 {/* Colunas da tabela, baseadas nos campos dos objetos de aluno */}
                 <Column field="nome" header="Nome" style={{ width: '15%' }} />
@@ -90,7 +104,19 @@ function TabelaPaciente(): JSX.Element {
                 />
 
                 {/* Coluna personalizada para exibir o celular formatado */}
-                
+                <Column
+                    field="idPaciente"
+                    header="Ação"
+                    headerStyle={{ backgroundColor: 'var(--cor-primaria)', color: 'var(--font-color)' }}
+                    style={{ width: '15%', color: 'var(--font-color)' }}
+                    body={(rowData) => (
+                        <button
+                            style={{ width: '100%' }}
+                            onClick={() => deletar(rowData)}
+                        >Deletar</button>
+                    )}
+                />
+
             </DataTable>
         </main>
     );

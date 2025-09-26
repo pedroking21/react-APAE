@@ -2,7 +2,7 @@
 import { JSX, useEffect, useState } from 'react';
 
 // Importa os componentes da biblioteca PrimeReact
-import { DataTable } from 'primereact/datatable'; 
+import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 
@@ -40,6 +40,20 @@ function TabelaMedico(): JSX.Element {
         fetchMedicos();
     }, []);
 
+    const deletar = async (medico: MedicoDTO) => {
+        const confirmar = window.confirm(`Deseja realmente deletar o paciente ${medico.nome} ${medico.especialidade}?`);
+        if (confirmar && typeof medico.idMedico === 'number') {
+            const removido = await MedicoRequests.removerMedico(medico.idMedico);
+            if (removido) {
+                window.location.reload(); //atualizar a pagina
+            } else {
+                alert('Erro ao remover o medico');
+            }
+        } else if (confirmar) {
+            alert('ID do medico inválido')
+        }
+    }
+
     return (
         <main>
             {/* Título da tabela */}
@@ -69,6 +83,19 @@ function TabelaMedico(): JSX.Element {
                 <Column field="crm" header="CRM" style={{ width: '15%' }} />
                 <Column field="telefone" header="Telefone" style={{ width: '15%' }} />
                 <Column field="email" header="E-mail" style={{ width: '20%' }} />
+
+                <Column
+                    field="idMedico"
+                    header="Ação"
+                    headerStyle={{ backgroundColor: 'var(--cor-primaria)', color: 'var(--font-color)' }}
+                    style={{ width: '15%', color: 'var(--font-color)' }}
+                    body={(rowData) => (
+                        <button
+                            style={{ width: '100%' }}
+                            onClick={() => deletar(rowData)}
+                        >Deletar</button>
+                    )}
+                />
             </DataTable>
         </main>
     );

@@ -36,13 +36,13 @@ class MedicoRequests {
         try {
             // Envia a requisição para a rota de listagem de empréstimos
             const respostaAPI = await fetch(`${this.serverURL}${this.routeListaMedicos}`, {
-                'headers' : {
+                'headers': {
                     'x-access-token': token ?? '', // envia o token de autenticação no cabeçalho da requisição  
                 }
             });
-        
+
             // Verifica se a resposta da API foi bem-sucedida (status 200-299)
-            if(respostaAPI.ok) {
+            if (respostaAPI.ok) {
                 // Converte a resposta para formato JSON
                 const listaDeMedicos: MedicoDTO = await respostaAPI.json();
 
@@ -61,12 +61,12 @@ class MedicoRequests {
         }
     }
 
-        /**
-     * Envia os dados do formulário aluno para a API
-     * @param formMedico Objeto com os valores do formulário
-     * @returns **true** se cadastro com sucesso, **false** se falha
-     */
-   // ...existing code...
+    /**
+ * Envia os dados do formulário aluno para a API
+ * @param formMedico Objeto com os valores do formulário
+ * @returns **true** se cadastro com sucesso, **false** se falha
+ */
+    // ...existing code...
     async enviaFormularioMedico(formMedico: string): Promise<boolean> {
         const token = localStorage.getItem('token'); // Recupera o token de autenticação do armazenamento local
         try {
@@ -79,13 +79,32 @@ class MedicoRequests {
                 body: formMedico
             });
 
-            if(!respostaAPI.ok) {
+            if (!respostaAPI.ok) {
                 throw new Error('Erro ao fazer requisição com o servidor.');
             }
 
             return true;
         } catch (error) {
             console.error(`Erro ao enviar o formulário. ${error}`);
+            return false;
+        }
+    }
+    async removerMedico(idMedico: number): Promise<boolean> {
+        const token = localStorage.getItem('token'); // recupera o token do localStorage
+        try {
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeRemoveMedico}?idMedico=${idMedico}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token': `${token}`
+                }
+            });
+            if (!respostaAPI.ok) {
+                throw new Error('Erro ao fazer requisição à API.');
+            }
+            return true;
+        } catch (error) {
+            console.error(`Erro ao fazer solicitação. ${error}`);
             return false;
         }
     }
