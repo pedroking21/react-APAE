@@ -5,6 +5,7 @@ import { JSX, useEffect, useState } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
+import { FaTrashAlt } from "react-icons/fa";
 
 // Importa o serviço responsável pelas requisições relacionadas a médicos
 import MedicoRequests from '../../../fetch/MedicoRequests';
@@ -93,7 +94,7 @@ function TabelaMedico(): JSX.Element {
                         <button
                             style={{ width: '100%' }}
                             onClick={() => deletar(rowData)}
-                        >Deletar</button>
+                        ><FaTrashAlt /></button>
                     )}
                 />
             </DataTable>
