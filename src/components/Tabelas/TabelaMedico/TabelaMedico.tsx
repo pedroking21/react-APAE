@@ -42,7 +42,7 @@ function TabelaMedico(): JSX.Element {
     }, []);
 
     const deletar = async (medico: MedicoDTO) => {
-        const confirmar = window.confirm(`Deseja realmente deletar o paciente ${medico.nome} ${medico.especialidade}?`);
+        const confirmar = window.confirm(`Deseja realmente deletar o medico ${medico.nome} ${medico.especialidade}?`);
         if (confirmar && typeof medico.idMedico === 'number') {
             const removido = await MedicoRequests.removerMedico(medico.idMedico);
             if (removido) {

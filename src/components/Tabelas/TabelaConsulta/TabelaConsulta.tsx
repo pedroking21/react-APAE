@@ -46,7 +46,7 @@ function TabelaConsulta(): JSX.Element {
     }, []);
 
     const deletar = async (consulta: ConsultaDTO) => {
-        const confirmar = window.confirm(`Deseja realmente deletar o paciente ${consulta.idConsulta} ${consulta.nome}? ID: ${consulta.idConsulta}`);
+        const confirmar = window.confirm(`Deseja realmente deletar a consulta ${consulta.idConsulta} ${consulta.nome}? ID: ${consulta.idConsulta}`);
         if (
             confirmar &&
             typeof consulta.idMedico === 'number' &&

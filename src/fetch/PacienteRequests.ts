@@ -104,6 +104,29 @@ class PacienteRequests {
             return false;
         }
     }
+     async atualizarPaciente(idPaciente: number, formPaciente: string): Promise<boolean> {
+        const token = localStorage.getItem('token'); // Recupera o token do armazenamento local
+        try {
+            const routeAtualizaPaciente = this.routeAtualizaPaciente.replace(':idPaciente', idPaciente.toString());
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeAtualizaPaciente}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token': `${token}`
+                },
+                body: formPaciente
+            });
+
+            if (!respostaAPI.ok) {
+                throw new Error('Erro ao atualizar paciente no servidor.');
+            }
+
+            return true;
+        } catch (error) {
+            console.error(`Erro ao atualizar paciente. ${error}`);
+            return false;
+        }
+    }
 }
 
 // Exporta a classe já instanciando um objeto da mesma
