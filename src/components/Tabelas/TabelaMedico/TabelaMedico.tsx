@@ -88,7 +88,7 @@ function TabelaMedico(): JSX.Element {
                 <Column
                     field="idMedico"
                     header="Ação"
-                    headerStyle={{ backgroundColor: 'var(--cor-primaria)', color: 'var(--font-color)' }}
+                    headerStyle={{ backgroundColor: 'var(--cor-primaria)', color: '#ffffff' }}
                     style={{ width: '15%', color: 'var(--font-color)' }}
                     body={(rowData) => (
                         <button

@@ -93,7 +93,7 @@ function TabelaConsulta(): JSX.Element {
                     style={{ width: '10%' }}
                     body={(rowData) => new Date(rowData.data).toLocaleDateString('pt-BR')}
                 />
-                <Column field="nome" header="Nome" />
+
                 <Column field="hora" header="Hora" />
                 <Column field="diagnostico" header="Diagnóstico" />
                 <Column field="receita" header="Receita" />
@@ -101,12 +101,11 @@ function TabelaConsulta(): JSX.Element {
                 <Column field="consultaStatus" header="Status da Consulta" />
                 <Column field="idPaciente" header="ID do Paciente" />
                 <Column field="idMedico" header="ID do Médico" />
-                <Column field="statusConsultaRegistro" header="Registro Confirmado" />
 
                 <Column
                     field="idConsulta"
                     header="Ação"
-                    headerStyle={{ backgroundColor: 'var(--cor-primaria)', color: 'var(--font-color)' }}
+                    headerStyle={{ backgroundColor: 'var(--cor-primaria)', color: '#ffffff' }}
                     style={{ width: '15%', color: 'var(--font-color)' }}
                     body={(rowData) => (
                         <button

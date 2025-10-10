@@ -21,6 +21,12 @@ export const APP_ROUTES = {
 
 }
 
+export const CONSULTA_STATUS = {
+    STATUS_EM_CANCELADA: 'Cancelada',
+    STATUS_AGENDADA: 'Agendada',
+    STATUS_REALIZADA: 'Realizada'
+}
+
 /**
  * Configurações referente ao servidor da API
  * Todas as configurações referentes aos servidor web devem ser inseridas em SERVER_CFG
