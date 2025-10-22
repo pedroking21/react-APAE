@@ -1,8 +1,9 @@
+import { JSX } from 'react';
 import Cabecalho from "../../../components/Cabecalho/Cabecalho";
 import FormMedico from "../../../components/Formularios/FormMedico/FormMedico";
 import Rodape from "../../../components/Rodape/Rodape";
 
-function PCadastroMedico() {
+function PCadastroMedico(): JSX.Element {
     return (
         <div className="pagina-grid">
             {/* Renderiza o cabeçalho da página */}
