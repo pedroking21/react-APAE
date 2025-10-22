@@ -99,8 +99,8 @@ function TabelaConsulta(): JSX.Element {
                 <Column field="receita" header="Receita" />
                 <Column field="salaAtendimento" header="Sala de Atendimento" />
                 <Column field="consultaStatus" header="Status da Consulta" />
-                <Column field="idPaciente" header="ID do Paciente" />
-                <Column field="idMedico" header="ID do Médico" />
+                <Column field="nome_paciente" header="Nome do paciente" />
+                <Column field="nome_medico" header="Nome do médico" />
 
                 <Column
                     field="idConsulta"
