@@ -10,6 +10,7 @@ import ProtectedRoute from './components/Rotas/ProtectedRoute';
 import PCadastroConsulta from './pages/PCadastro/PCadastroConsulta/PCadastroConsulta';
 import PCadastroPaciente from './pages/PCadastro/PCadastroPaciente/PCadastroPaciente';
 import PCadastroMedico from './pages/PCadastro/PCadastroMedico/PCadastroMedico';
+import PCadastroUsuario from './pages/PCadastro/PCadastroUsuario/PCadastroUsuario';
 
 
 /**
@@ -41,6 +42,8 @@ function AppRoutes() {
                 <Route path={APP_ROUTES.ROUTE_CADASTRO_PACIENTE} element={<ProtectedRoute element={PCadastroPaciente} />} /> 
 
                 <Route path={APP_ROUTES.ROUTE_CADASTRO_MEDICO} element={<ProtectedRoute element= {PCadastroMedico} />} /> 
+
+                <Route path={`${APP_ROUTES.ROUTE_CADASTRO_USUARIO}`} element={<PCadastroUsuario />} />
 
                 
 

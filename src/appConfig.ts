@@ -19,6 +19,10 @@ export const APP_ROUTES = {
 
 
 
+    ROUTE_CADASTRO_USUARIO: '/cadastro/usuario'
+
+
+
 }
 
 export const CONSULTA_STATUS = {
@@ -34,5 +38,7 @@ export const CONSULTA_STATUS = {
  * Qualquer alteração nos endpoints, no endereço do servidor ou porta que forem feitas lá deve ser replicada aqui
  */
 export const SERVER_CFG = {
-    SERVER_URL: 'http://localhost:3333'
+    SERVER_URL: 'http://localhost:3333',
+    ENDPOINT_CADASTRO_USUARIO: '/novo/usuario'
+    
 }
