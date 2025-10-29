@@ -94,13 +94,13 @@ function TabelaConsulta(): JSX.Element {
                     body={(rowData) => new Date(rowData.data).toLocaleDateString('pt-BR')}
                 />
 
+                <Column field="nomePaciente" header="Nome do paciente" />
+                <Column field="nomeMedico" header="Nome do médico" />
                 <Column field="hora" header="Hora" />
                 <Column field="diagnostico" header="Diagnóstico" />
                 <Column field="receita" header="Receita" />
                 <Column field="salaAtendimento" header="Sala de Atendimento" />
                 <Column field="consultaStatus" header="Status da Consulta" />
-                <Column field="nomePaciente" header="Nome do paciente" />
-                <Column field="nomeMedico" header="Nome do médico" />
 
                 <Column
                     field="idConsulta"
