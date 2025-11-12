@@ -64,7 +64,7 @@ function TabelaConsulta(): JSX.Element {
     }
 
     return (
-        <main>
+        <main className={estilo['container-consulta']}>{/* Container principal do componente */}
             {/* Título da tabela com classe personalizada */}
             <h1 className={estilo['header-tabela-consulta']}>Lista de Consultas</h1>
             <a
@@ -105,11 +105,11 @@ function TabelaConsulta(): JSX.Element {
                 <Column
                     field="idConsulta"
                     header="Ação"
-                    headerStyle={{ backgroundColor: 'var(--cor-primaria)', color: '#ffffff' }}
+                    headerStyle={{ backgroundColor: '#0A3D62', color: '#ffffff' }}
                     style={{ width: '15%', color: 'var(--font-color)' }}
                     body={(rowData) => (
                         <button
-                            style={{ width: '100%' }}
+                            style={{ width: '100%'}}
                             onClick={() => deletar(rowData)}
                         ><FaTrashAlt /></button>
                     )}

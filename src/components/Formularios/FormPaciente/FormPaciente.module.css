@@ -7,16 +7,20 @@
 }
 
 .form-paciente {
+    background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-fundo) 80%);
     width: 70%;
     display: flex;
     flex-direction: column;
     margin: auto auto;
+    border-radius: 20px;
+    padding: 2%;
 }
 
 .form-paciente label {
     display: flex;
     flex-direction: column;
     margin: 1% 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 .form-paciente input {
@@ -28,6 +32,7 @@
     height: 5vh;
     border-radius: 8px;
     background-color: var(--cor-primaria);
+    color: #FFFFFF;
     border: none;
     font-size: 1.15rem;
 }

@@ -1,45 +1,130 @@
-@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+:root {
+  --cor-primaria: #2563eb;       /* azul moderno */
+  --cor-secundaria: #60a5fa;     /* azul suave */
+  --cor-fundo: #f9fafb;          /* quase branco */
+  --texto-escuro: #0f172a;       /* cinza azulado */
+  --texto-claro: #64748b;        /* cinza médio */
+}
+
+/* Reset moderno */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cor-fundo);
+}
+
+/* ====== LAYOUT PRINCIPAL ====== */
 .principal {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: flex-start;
-    height: calc(100vh - 60px); /* ocupa a tela inteira menos o menu (120px) */
-    padding: 10px;
-    background-color: #c7dbf4; /* azul claro */
-  }
-  
-  .margem {
-    margin-bottom: 20px;
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-
-    font-family: "Julius Sans One", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: calc(100vh - 60px);
+  padding: 4rem 6rem;
+  background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-fundo) 80%);
+  color: var(--texto-escuro);
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+  overflow: hidden;
 }
-  
+
+/* Elemento decorativo suave no fundo */
+.principal::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--cor-primaria) 0%, transparent 70%);
+  opacity: 0.15;
+  z-index: 0;
+  animation: pulse 6s infinite ease-in-out;
+}
+
+.margem {
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+/* ====== TÍTULO ====== */
 .margem h1 {
-  font-size: 90px;
-  font-weight: bold;
-  color: #000000;
-  padding-top: 50px; /* esse espaçamento fica dentro do h1 */
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--texto-escuro);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.9s ease-out;
 }
-  
-  .texto p {
-    font-size: 70px;
-  
-  }
-  .texto {
-    font-size: 80px;
-    color: #000000;
-    margin: 6% 0;
-    line-height: 1.;
+
+/* ====== TEXTO DE BOAS-VINDAS ====== */
+.texto {
+  z-index: 1;
+  color: var(--texto-claro);
+  font-size: 1.8rem;
+  line-height: 1.4;
+  max-width: 700px;
+  animation: fadeIn 1.6s ease;
+}
+
+.texto p {
+  margin-bottom: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.texto p:hover {
+  transform: translateX(8px);
+  color: var(--cor-primaria);
+}
+
+/* ====== ANIMAÇÕES ====== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.15; }
+  50% { transform: scale(1.1); opacity: 0.25; }
+}
+
+/* ====== RESPONSIVIDADE ====== */
+@media (max-width: 900px) {
+  .principal {
+    padding: 3rem;
     align-items: center;
-    margin-top: 0px;
+    text-align: center;
   }
+
+  .margem h1 {
+    font-size: 3.5rem;
+  }
+
+  .texto {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .margem h1 {
+    font-size: 2.8rem;
+  }
+
+  .texto {
+    font-size: 1.2rem;
+  }
+}

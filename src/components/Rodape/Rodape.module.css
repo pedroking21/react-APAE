@@ -1,58 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --cor-primaria: #2563eb;
+  --cor-secundaria: #60a5fa;
+  --cor-fundo: #f9fafb;
+  --texto-escuro: #0f172a;
+  --texto-claro: #64748b;
+}
+
+/* ===== RODAPÉ ===== */
 .rodape {
-    width: 100%;
-    background-color: #0a3d6291;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 5%;
-    color: white;
-    flex-wrap: wrap;
+  width: 100%;
+  background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 6%;
+  color: white;
+  flex-wrap: wrap;
+  position: relative;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease-in-out;
+  z-index: 10;
+}
+
+/* ===== COLUNA PRINCIPAL ===== */
+.coluna {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+.coluna h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.coluna h5 {
+  font-size: 1rem;
+  color: #e2e8f0;
+  margin-left: 2px;
+  letter-spacing: 1px;
+}
+
+/* ===== COLUNA DE ÍCONES ===== */
+.colunaIcones {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.colunaIcones div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.colunaIcones div:hover {
+  transform: translateY(-5px);
+  opacity: 0.9;
+}
+
+.colunaIcones img {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.colunaIcones div:hover img {
+  transform: scale(1.1);
+}
+
+.colunaIcones p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #f1f5f9;
+  transition: color 0.3s ease;
+}
+
+.colunaIcones div:hover p {
+  color: white;
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
   }
-  
-  .coluna {
-    display: flex;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 900px) {
+  .rodape {
     flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .coluna h1 {
-    margin: 0;
-    font-size: 2rem;
-    font-weight: bold;
-    color: black;
-  }
-  
-  .coluna h5 {
-    margin: 0;
-    font-size: 1rem;
-    color: black;
-    margin-left: 10%;
-  }
-  
-  .colunaIcones {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
     text-align: center;
+    gap: 1.5rem;
   }
-  
-  .colunaIcones div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+  .colunaIcones {
+    gap: 1.5rem;
   }
-  
+
+  .coluna h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .coluna h1 {
+    font-size: 1.5rem;
+  }
+
   .colunaIcones img {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 0.5rem;
+    width: 28px;
+    height: 28px;
   }
-  
+
   .colunaIcones p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: black;
+    font-size: 0.8rem;
   }
-  
+}

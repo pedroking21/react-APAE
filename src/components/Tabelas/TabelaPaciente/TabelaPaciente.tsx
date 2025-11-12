@@ -60,7 +60,7 @@ function TabelaPaciente(): JSX.Element {
     }
 
     return (
-        <main className='container'> {/* Container principal do componente */}
+        <main className={estilo['container-paciente']}>{/* Container principal do componente */}
             {/* Título da tabela com classe personalizada */}
             <h1 className={estilo['header-tabela-paciente']}>Lista de Pacientes</h1>
             {/* Título da tabela com classe personalizada */}
@@ -108,7 +108,7 @@ function TabelaPaciente(): JSX.Element {
                 <Column
                     field="idPaciente"
                     header="Ação"
-                    headerStyle={{ backgroundColor: 'var(--cor-primaria)', color: '#ffffff' }}
+                    headerStyle={{ backgroundColor: '#0A3D62', color: '#ffffff' }}
                     style={{ width: '15%', color: 'var(--font-color)' }}
                     body={(rowData) => (
                         <button

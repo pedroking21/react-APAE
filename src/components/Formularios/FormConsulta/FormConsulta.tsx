@@ -67,7 +67,7 @@ function FormConsulta(): JSX.Element {
     }
 
     return (
-        <section className={estilo['sec-form-Consulta']}>
+        <section className={estilo['sec-form-consulta']}>
             <h1>Cadastro Consulta</h1>
             <form action="post" onSubmit={(e) => { e.preventDefault(); handleSubmit(formData); }}
                     className={estilo['form-consulta']}
@@ -131,7 +131,7 @@ function FormConsulta(): JSX.Element {
                     </label>
 
                     <label htmlFor="">
-                        diagnostico
+                        Diagnostico
                         <input
                             type="text"
                             name="diagnostico"
@@ -141,7 +141,7 @@ function FormConsulta(): JSX.Element {
                     </label>
 
                     <label htmlFor="">
-                        receita
+                        Receita
                         <input
                             type="text"
                             name="receita"

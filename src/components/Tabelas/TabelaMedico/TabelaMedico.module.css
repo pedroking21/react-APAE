@@ -1,18 +1,72 @@
-/* TabelaMedico.module.css */
+/* ============================= */
+/* ===== ESTILOS GERAIS ======== */
+/* ============================= */
 
-.header-tabela-medico {
-    text-align: center;
-    margin: 2% auto;
-    color: #0A3D62;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --cor-primaria: #0A3D62;
+    --cor-secundaria: #60a5fa;
+    --cor-fundo: #f9fafb;
+    --texto-claro: #ffffff;
+    --texto-escuro: #0f172a;
 }
 
+/* ===== CABEÇALHO ===== */
+.header-tabela-medico {
+    text-align: center;
+    margin: 2% auto 1.5rem auto;
+    color: var(--cor-primaria);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: fadeInDown 0.9s ease-in-out;
+}
+
+/* ===== BOTÃO DE CADASTRO ===== */
+.anc-pag-cadastro {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 2.5rem auto;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--texto-claro);
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+    padding: 0.9rem 2.2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    font-size: 1rem;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.anc-pag-cadastro:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-primaria) 100%);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.45);
+}
+
+.anc-pag-cadastro:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* ============================= */
+/* ===== TABELA DE CONSULTAS ==== */
+/* ============================= */
+
 .data-table {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-
-    margin: 5% auto 0 auto;
+    margin: 3% auto 0 auto;
     width: 90%;
 }
 
@@ -21,43 +75,38 @@
 }
 
 .data-table :global(.p-datatable-thead > tr > th) {
-    background-color: #0A3D62;
-    color: #ffffff;
+    background-color: var(--cor-primaria);
+    color: var(--texto-claro);
     font-weight: 600;
     text-align: left;
     padding: 1rem;
     border-bottom: 2px solid #ffffff;
 }
 
-/* Define o fundo padrão na linha */
 .data-table :global(.p-datatable-tbody > tr) {
-    background-color: #0A3D62;
+    background-color: var(--cor-primaria);
 }
 
-/* Remove o fundo fixo das células pra não sobrepor */
 .data-table :global(.p-datatable-tbody > tr > td) {
     padding: 1rem;
     border-bottom: 1px solid #4d4d4d;
     color: #ffffff;
     background-color: transparent;
-    /* ou tira essa linha */
 }
 
-/* Hover na linha */
 .data-table :global(.p-datatable-tbody > tr:hover) {
     background-color: #005f97;
     transition: background-color 0.3s ease;
     cursor: pointer;
 }
 
-
 .data-table :global(.p-paginator) {
     padding: 1rem;
     border-top: 1px solid #ddd;
     justify-content: space-between;
     font-size: 0.9rem;
-    background-color: #0A3D62;
-    color: #ffffff;
+    background-color: var(--cor-primaria);
+    color: var(--texto-claro);
 }
 
 .data-table :global(.p-dropdown) {
@@ -66,13 +115,17 @@
 
 .data-table :global(.p-paginator .p-paginator-pages .p-paginator-page.p-highlight) {
     background-color: #b5bbbf;
-    color: rgb(255, 255, 255);
+    color: #fff;
     border-radius: 4px;
 }
 
 .data-table :global(.p-paginator .p-paginator-element) {
     margin: 0 0.25rem;
 }
+
+/* ============================= */
+/* ===== RESPONSIVIDADE ======== */
+/* ============================= */
 
 @media (max-width: 768px) {
     .data-table :global(.p-datatable) {
@@ -104,4 +157,45 @@
         font-weight: bold;
         margin-right: 1rem;
     }
+
+    .anc-pag-cadastro {
+        width: 80%;
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 0.8rem 1.8rem;
+    }
+}
+
+/* ============================= */
+/* ===== ANIMAÇÕES SUAVES ===== */
+/* ============================= */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.container-medico {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-fundo) 80%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
 }

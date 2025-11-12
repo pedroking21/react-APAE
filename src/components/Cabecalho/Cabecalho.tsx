@@ -35,10 +35,18 @@ function Cabecalho(): JSX.Element {
                     <a href={APP_ROUTES.ROUTE_LISTAGEM_PACIENTES}>Pacientes</a>
                     <a href={APP_ROUTES.ROUTE_LISTAGEM_MEDICOS}>Médicos</a>
                     <a href={APP_ROUTES.ROUTE_LISTAGEM_CONSULTAS}>Consultas</a>
-                    <button onClick={logout}>SAIR</button>
+                    <button onClick={logout} className={estilo['btn-sair']}>
+                        SAIR
+                    </button>
                 </>
             ) : (
-                <button onClick={() => (window.location.href = '/login')}>LOGIN</button>
+                <button
+                    onClick={() => (window.location.href = '/login')}
+                    className={estilo['btn-login']}
+                >
+                    LOGIN
+                </button>
+
             )}
         </header>
     );

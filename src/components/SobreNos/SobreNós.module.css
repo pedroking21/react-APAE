@@ -1,45 +1,143 @@
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
 
+:root {
+  --cor-primaria: #0A3D62;        /* azul profundo elegante */
+  --cor-secundaria: #60a5fa;      /* azul moderno suave */
+  --cor-fundo: #c7dbf4;           /* azul claro */
+  --texto-escuro: #000000;
+  --texto-claro: #2e2e2e;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Julius Sans One', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cor-fundo);
+}
+
+/* ====== SEÇÃO PRINCIPAL ====== */
 .principal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* centraliza verticalmente */
-    align-items: center;     /* centraliza horizontalmente */
-    height: calc(100vh - 60px); /* altura da tela menos o menu */
-    padding: 10px;
-    background-color: #c7dbf4; /* azul claro */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centraliza verticalmente */
+  align-items: center;     /* centraliza horizontalmente */
+  height: calc(100vh - 60px);
+  padding: 3rem;
+  background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-fundo) 80%);
+  color: var(--texto-escuro);
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Efeito de brilho no fundo */
+.principal::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--cor-primaria) 0%, transparent 70%);
+  opacity: 0.15;
+  z-index: 0;
+  animation: pulse 6s infinite ease-in-out;
+}
+
+/* ====== CONTEÚDO CENTRAL ====== */
+.margem, .texto {
+  z-index: 1;
+  text-align: center;
+  max-width: 700px;
+}
+
+/* ====== TÍTULO ====== */
+.margem h1 {
+  font-size: 2.5rem; /* menor e mais elegante */
+  font-weight: 700;
+  color: var(--texto-escuro);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.9s ease-out;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.margem h1::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 50px;
+  height: 3px;
+  background: var(--cor-primaria);
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+
+/* ====== TEXTO ====== */
+.texto {
+  color: var(--texto-claro);
+  font-size: 1.1rem; /* texto mais discreto */
+  line-height: 1.5;
+  animation: fadeIn 1.6s ease;
+}
+
+.texto p {
+  margin-bottom: 0.8rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.texto p:hover {
+  transform: translateY(-3px);
+  color: var(--cor-primaria);
+}
+
+/* ====== ANIMAÇÕES ====== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.15; }
+  50% { transform: scale(1.1); opacity: 0.25; }
+}
+
+/* ====== RESPONSIVIDADE ====== */
+@media (max-width: 900px) {
+  .principal {
+    padding: 2rem;
   }
-  
-  .margem {
-    margin-bottom: px;
-    text-align: center; /* garante centralização do texto */
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    font-family: "Julius Sans One", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-  }
-  
+
   .margem h1 {
     font-size: 2rem;
-    font-weight: bold;
-    color: #000000;
-    padding-top: px;
   }
-  
+
   .texto {
-    font-size: 80px;
-    color: #000000;
-    margin: 2% 0;
-    line-height: 1;
-    text-align: center;
+    font-size: 1rem;
   }
-    
-  .texto p {
-    font-size: 1.4rem;
+}
+
+@media (max-width: 500px) {
+  .margem h1 {
+    font-size: 1.8rem;
   }
-  
+
+  .texto {
+    font-size: 0.95rem;
+  }
+}

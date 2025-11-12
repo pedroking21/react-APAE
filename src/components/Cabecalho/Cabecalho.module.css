@@ -23,3 +23,49 @@
     font-size: 1.5rem;
     text-decoration: none;
 }
+
+.btn-sair {
+    background: linear-gradient(135deg, var(--cor-secundaria) 0%, #3b82f6 100%);
+    color: var(--texto-claro);
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.4rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    margin-right: 2rem;
+}
+
+.btn-sair:hover {
+    background: linear-gradient(135deg, #2563eb 0%, var(--cor-secundaria) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+}
+
+.btn-sair:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* botão de login igual ao sair, mas com cor invertida */
+.btn-login {
+    background: transparent;
+    border: 2px solid var(--texto-claro);
+    color: var(--texto-claro);
+    border-radius: 8px;
+    padding: 0.6rem 1.4rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-right: 2rem;
+}
+
+.btn-login:hover {
+    background: var(--texto-claro);
+    color: var(--cor-primaria);
+}

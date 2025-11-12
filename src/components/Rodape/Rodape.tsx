@@ -11,19 +11,19 @@ function Rodape(): JSX.Element {
 
       <div className={estilo.colunaIcones}>
         <div>
-        <img src="src/assets/whatsapp.png" alt="whatsapp" />
+        <img src="/src/assets/whatsapp.png" alt="whatsapp" />
           <p>16 9234-1908</p>
         </div>
         <div>
-          <img src="src/assets/instagram.png" alt="instagram" />
+          <img src="/src/assets/instagram.png" alt="instagram" />
           <p>MedClinic</p>
         </div>
         <div>
-          <img src="src/assets/email.png" alt="email" />
+          <img src="/src/assets/email.png" alt="email" />
           <p>MedClinicCentroMedico@gmail.com</p>
         </div>
         <div>
-          <img src="src/assets/facebook.png" alt="facebook" />
+          <img src="/src/assets/facebook.png" alt="facebook" />
           <p>MedClinic Centro Médico</p>
         </div>
       </div>

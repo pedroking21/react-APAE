@@ -56,7 +56,7 @@ function TabelaMedico(): JSX.Element {
     }
 
     return (
-        <main>
+        <main className={estilo['container-medico']}>{/* Container principal do componente */}
             {/* Título da tabela */}
             <h1 className={estilo['header-tabela-medico']}>Lista de Médicos</h1>
             <a
@@ -88,7 +88,7 @@ function TabelaMedico(): JSX.Element {
                 <Column
                     field="idMedico"
                     header="Ação"
-                    headerStyle={{ backgroundColor: 'var(--cor-primaria)', color: '#ffffff' }}
+                    headerStyle={{ backgroundColor: '#0A3D62', color: '#ffffff' }}
                     style={{ width: '15%', color: 'var(--font-color)' }}
                     body={(rowData) => (
                         <button
