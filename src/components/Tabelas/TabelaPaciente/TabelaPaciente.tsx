@@ -5,7 +5,6 @@ import { JSX, useEffect, useState } from 'react'; // Hooks do React para trabalh
 import { DataTable } from 'primereact/datatable'; // Componente de tabela da biblioteca PrimeReact
 import { Column } from 'primereact/column'; // Componente de coluna da tabela
 import { Button } from 'primereact/button'; // Componente de botão da PrimeReact
-import { FaTrashAlt } from "react-icons/fa";
 
 // Importa o serviço responsável pelas requisições relacionadas a alunos
 import PacienteRequests from '../../../fetch/PacienteRequests'; // Importa a classe responsável pelas requisições dos alunos
@@ -111,13 +110,19 @@ function TabelaPaciente(): JSX.Element {
                     headerStyle={{ backgroundColor: '#0A3D62', color: '#ffffff' }}
                     style={{ width: '15%', color: 'var(--font-color)' }}
                     body={(rowData) => (
-                        <button
-                            style={{ width: '100%' }}
-                            onClick={() => deletar(rowData)}
-                        ><FaTrashAlt /></button>
-                    )}
-                />
+                        <>
+                            <button
+                                style={{ width: '100%' }}
+                                onClick={() => deletar(rowData)}
+                            >Deletar</button>
 
+                            <button
+                                style={{ width: '100%' }}
+                                onClick={() => window.location.href = `/atualizar/paciente/${rowData.idPaciente}`}
+                            >Atualizar</button>
+                        </>
+                    )}
+                    />
             </DataTable>
         </main>
     );

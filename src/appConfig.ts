@@ -15,8 +15,11 @@ export const APP_ROUTES = {
 
     ROUTE_CADASTRO_PACIENTE: '/cadastro/paciente',
     ROUTE_CADASTRO_CONSULTA: '/cadastro/consulta',
-    ROUTE_CADASTRO_MEDICO: '/cadastro/medico', 
+    ROUTE_CADASTRO_MEDICO: '/cadastro/medico',
 
+
+
+    ROUTE_ATUALIZAR_PACIENTE: '/atualizar/paciente',
 
 
     ROUTE_CADASTRO_USUARIO: '/cadastro/usuario'
@@ -40,5 +43,5 @@ export const CONSULTA_STATUS = {
 export const SERVER_CFG = {
     SERVER_URL: 'http://localhost:3333',
     ENDPOINT_CADASTRO_USUARIO: '/novo/usuario'
-    
+
 }

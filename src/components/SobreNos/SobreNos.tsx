@@ -2,7 +2,7 @@
 import { JSX } from 'react';
 
 // Importa os estilos CSS específicos para o componente Welcome
-import estilo from './SobreNós.module.css';
+import estilo from './SobreNos.module.css';
 
 // Declara o componente funcional Welcome, que retorna uma estrutura JSX
 function SobreNos(): JSX.Element {

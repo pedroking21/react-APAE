@@ -108,6 +108,30 @@ class MedicoRequests {
             return false;
         }
     }
+    async enviarFormularioAtualizacaoMedico(formMedico: MedicoDTO): Promise<boolean> {
+        const token = localStorage.getItem('token');
+
+        try {
+            const respostaAPI =
+                await fetch(`${this.serverURL}${this.routeAtualizaMedico}?idMedico=${formMedico.idMedico}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-type': 'application/json',
+                        'x-access-token': `${token}`
+                    },
+                    body: JSON.stringify(formMedico)
+                });
+
+            if (!respostaAPI.ok) {
+                throw new Error('Erro ao fazer requisição com o servidor.');
+            }
+
+            return true;
+        } catch (error) {
+            console.error(`Erro ao enviar requisição. ${error}`);
+            return false;
+        }
+    }
 }
 // ...existing code...
 

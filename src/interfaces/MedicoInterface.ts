@@ -3,11 +3,11 @@
  */
 interface MedicoDTO {
     idMedico?: number,
-    nome: string,
-    especialidade: string,
-    crm: string,
-    telefone: string,
-    email: string
+    nome?: string,
+    especialidade?: string,
+    crm?: string,
+    telefone?: string,
+    email?: string
 }
 
 export default MedicoDTO;

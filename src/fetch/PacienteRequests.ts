@@ -9,6 +9,7 @@ class PacienteRequests {
 
     private serverURL: string;          // Variável para o endereço do servidor
     private routeListaPacientes: string;   // Variável para a rota de listagem de alunos
+    private routeListaPaciente: string;   // Variável para a rota de listagem de um aluno
     private routeCadastraPaciente: string; // Variável para a rota de cadastro de aluno
     private routeAtualizaPaciente: string; // Variável para a rota de atualiação de aluno
     private routeRemovePaciente: string;   // Variável para a rota de remoção do aluno
@@ -20,14 +21,15 @@ class PacienteRequests {
     constructor() {
         this.serverURL = SERVER_CFG.SERVER_URL;     // Endereço do servidor web
         this.routeListaPacientes = '/listar/pacientes';    // Rota configurada na API
+        this.routeListaPaciente = '/lista/paciente';    // Rota configurada na API
         this.routeCadastraPaciente = '/cadastro/paciente';    // Rota configurada na API
         this.routeAtualizaPaciente = '/atualizar/paciente/:idPaciente'; // Rota configurada na API
         this.routeRemovePaciente = '/remover/paciente/:idPaciente';    // Rota configurada na API
     }
 
     /**
-     * Método que faz uma requisição à API para buscar a lista de alunos cadastrados
-     * @returns Retorna um JSON com a lista de alunos ou null em caso de erro
+     * Método que faz uma requisição à API para buscar a lista de pcaientes cadastrados
+     * @returns Retorna um JSON com a lista de pacientes ou null em caso de erro
      */
     async listarPacientes(): Promise<PacienteDTO | null> {
         // Obtém o token de autenticação do localStorage
@@ -35,7 +37,7 @@ class PacienteRequests {
         try {
             // Envia a requisição para a rota de listagem de empréstimos
             const respostaAPI = await fetch(`${this.serverURL}${this.routeListaPacientes}`, {
-                'headers' : {
+                'headers': {
                     'x-access-token': token ?? '', // envia o token de autenticação no cabeçalho da requisição  
                 }
             });
@@ -47,7 +49,7 @@ class PacienteRequests {
                 // retorna a resposta
                 return listaDePacientes;
             }
-            
+
             // retorna um valor nulo caso o servidor não envie a resposta
             return null;
         } catch (error) {
@@ -58,11 +60,11 @@ class PacienteRequests {
         }
     }
 
-            /**
-     * Envia os dados do formulário aluno para a API
-     * @param formPaciente Objeto com os valores do formulário
-     * @returns **true** se cadastro com sucesso, **false** se falha
-     */
+    /**
+* Envia os dados do formulário paciente para a API
+* @param formPaciente Objeto com os valores do formulário
+* @returns **true** se cadastro com sucesso, **false** se falha
+*/
     async enviaFormularioPaciente(formPaciente: string): Promise<boolean> {
         const token = localStorage.getItem('token'); // Recupera o token de autenticação do armazenamento local
         try {
@@ -75,7 +77,7 @@ class PacienteRequests {
                 body: formPaciente
             });
 
-            if(!respostaAPI.ok) {
+            if (!respostaAPI.ok) {
                 throw new Error('Erro ao fazer requisição com o servidor.');
             }
 
@@ -85,7 +87,35 @@ class PacienteRequests {
             return false;
         }
     }
-        async removerPaciente(idPaciente: number): Promise<boolean> {
+    async consultaPaciente(idPaciente: number): Promise<PacienteDTO | null> {
+        const token = localStorage.getItem('token');
+
+        try {
+            console.log('fazendo consulta');
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeListaPaciente}?idPaciente=${idPaciente}`, {
+                headers: {
+                    'x-access-token': `${token}`
+                }
+            });
+
+            console.log('resposta: ' + JSON.stringify(respostaAPI));
+
+            // Verifica se a resposta foi bem-sucedida (status HTTP 200-299)
+            if (respostaAPI.ok) {
+                // converte a reposta para um JSON
+                const paciente: PacienteDTO = await respostaAPI.json();
+                // retorna a resposta
+                return paciente;
+            } else {
+                throw new Error("Não foi possível listar os pacientes");
+            }
+        } catch (error) {
+            console.error(`Erro ao fazer a consulta de paceinte: ${error}`);
+            return null;
+        }
+    }
+
+    async removerPaciente(idPaciente: number): Promise<boolean> {
         const token = localStorage.getItem('token'); // recupera o token do localStorage
         try {
             const respostaAPI = await fetch(`${this.serverURL}${this.routeRemovePaciente}?idPaciente=${idPaciente}`, {
@@ -104,26 +134,27 @@ class PacienteRequests {
             return false;
         }
     }
-     async atualizarPaciente(idPaciente: number, formPaciente: string): Promise<boolean> {
-        const token = localStorage.getItem('token'); // Recupera o token do armazenamento local
+    async enviarFormularioAtualizacaoPaciente(formPaciente: PacienteDTO): Promise<boolean> {
+        const token = localStorage.getItem('token');
+
         try {
-            const routeAtualizaPaciente = this.routeAtualizaPaciente.replace(':idPaciente', idPaciente.toString());
-            const respostaAPI = await fetch(`${this.serverURL}${this.routeAtualizaPaciente}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-access-token': `${token}`
-                },
-                body: formPaciente
-            });
+            const respostaAPI =
+                await fetch(`${this.serverURL}${this.routeAtualizaPaciente}?idPaciente=${formPaciente.idPaciente}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-type': 'application/json',
+                        'x-access-token': `${token}`
+                    },
+                    body: JSON.stringify(formPaciente)
+                });
 
             if (!respostaAPI.ok) {
-                throw new Error('Erro ao atualizar paciente no servidor.');
+                throw new Error('Erro ao fazer requisição com o servidor.');
             }
 
             return true;
         } catch (error) {
-            console.error(`Erro ao atualizar paciente. ${error}`);
+            console.error(`Erro ao enviar requisição. ${error}`);
             return false;
         }
     }
