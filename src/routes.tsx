@@ -12,6 +12,7 @@ import PCadastroPaciente from './pages/PCadastro/PCadastroPaciente/PCadastroPaci
 import PCadastroMedico from './pages/PCadastro/PCadastroMedico/PCadastroMedico';
 import PCadastroUsuario from './pages/PCadastro/PCadastroUsuario/PCadastroUsuario';
 import PAtualizacaoPaciente from './pages/PAtualizacao/PAtualizacaoPaciente/PAtualizacaoPaciente';
+import PAtualizacaoConsulta from './pages/PAtualizacao/PAtualizacaoConsulta/PAtualizacaoConsulta';
 
 
 /**
@@ -30,6 +31,9 @@ function AppRoutes() {
 
                 <Route path={APP_ROUTES.ROUTE_SOBRE_NOS} element={<PSobreNos />} />
 
+
+
+
                 {/* Rota para a listagem de pacientes */}
                 <Route path={APP_ROUTES.ROUTE_LISTAGEM_PACIENTES} element={<ProtectedRoute element={PListaPacientes} />} />
 
@@ -38,13 +42,19 @@ function AppRoutes() {
                 {/* Rota para a listagem de médicos */}
                 <Route path={APP_ROUTES.ROUTE_LISTAGEM_MEDICOS} element={<ProtectedRoute element={PListagemMedicos} />} /> 
 
+
+
+
                 <Route path={APP_ROUTES.ROUTE_CADASTRO_CONSULTA} element={<ProtectedRoute element={PCadastroConsulta} />} /> 
 
                 <Route path={APP_ROUTES.ROUTE_CADASTRO_PACIENTE} element={<ProtectedRoute element={PCadastroPaciente} />} /> 
 
                 <Route path={APP_ROUTES.ROUTE_CADASTRO_MEDICO} element={<ProtectedRoute element= {PCadastroMedico} />} /> 
 
+
+
                 <Route path={`${APP_ROUTES.ROUTE_ATUALIZAR_PACIENTE}/:idPaciente`} element={<ProtectedRoute element={PAtualizacaoPaciente} />} />
+                <Route path={`${APP_ROUTES.ROUTE_ATUALIZAR_CONSULTA}/:idConsulta`} element={<ProtectedRoute element={PAtualizacaoConsulta} />} />
 
                 <Route path={`${APP_ROUTES.ROUTE_CADASTRO_USUARIO}`} element={<PCadastroUsuario />} />
 

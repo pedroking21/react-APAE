@@ -108,10 +108,17 @@ function TabelaConsulta(): JSX.Element {
                     headerStyle={{ backgroundColor: '#0A3D62', color: '#ffffff' }}
                     style={{ width: '15%', color: 'var(--font-color)' }}
                     body={(rowData) => (
-                        <button
-                            style={{ width: '100%'}}
-                            onClick={() => deletar(rowData)}
-                        ><FaTrashAlt /></button>
+                        <>
+                            <button
+                                style={{ width: '100%' }}
+                                onClick={() => deletar(rowData)}
+                            >Deletar</button>
+
+                            <button
+                                style={{ width: '100%' }}
+                                onClick={() => window.location.href = `/atualizar/consulta/${rowData.idConsulta}`}
+                            >Atualizar</button>
+                        </>
                     )}
                 />
             </DataTable>

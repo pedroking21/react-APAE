@@ -20,6 +20,8 @@ export const APP_ROUTES = {
 
 
     ROUTE_ATUALIZAR_PACIENTE: '/atualizar/paciente',
+    ROUTE_ATUALIZAR_CONSULTA: '/atualizar/consulta',
+    ROUTE_ATUALIZAR_MEDICO: '/atualizar/medico',
 
 
     ROUTE_CADASTRO_USUARIO: '/cadastro/usuario'
