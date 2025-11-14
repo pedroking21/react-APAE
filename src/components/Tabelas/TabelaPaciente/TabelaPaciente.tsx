@@ -13,6 +13,8 @@ import PacienteRequests from '../../../fetch/PacienteRequests'; // Importa a cla
 import estilo from './TabelaPaciente.module.css'; // Importa os estilos específicos para este componente
 import PacienteDTO from '../../../interfaces/PacienteInterface';
 import { APP_ROUTES } from '../../../appConfig';
+import { FaTrashAlt } from "react-icons/fa";
+import { LiaEdit } from "react-icons/lia";
 
 
 /**
@@ -76,11 +78,12 @@ function TabelaPaciente(): JSX.Element {
                 rows={5} // Quantidade de linhas por página
                 rowsPerPageOptions={[5, 10, 25, 50]} // Opções de linhas por página
                 tableStyle={{ minWidth: '50rem' }} // Estilização mínima da tabela
-                paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink" // Template da paginação
+                paginatorTemplate={{
+                    layout: "RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"}}
                 currentPageReportTemplate="{first} de {last} total {totalRecords}" // Template do relatório da página
                 paginatorLeft={paginatorLeft} // Botão à esquerda da paginação
                 paginatorRight={paginatorRight} // Botão à direita da paginação
-                className={`p-datatable ${estilo['data-table']}`}
+                className={estilo['data-table']}
             // Classe CSS personalizada
             >
                 {/* Colunas da tabela, baseadas nos campos dos objetos de aluno */}
@@ -114,15 +117,15 @@ function TabelaPaciente(): JSX.Element {
                             <button
                                 style={{ width: '100%' }}
                                 onClick={() => deletar(rowData)}
-                            >Deletar</button>
+                            ><FaTrashAlt /></button>
 
                             <button
                                 style={{ width: '100%' }}
                                 onClick={() => window.location.href = `/atualizar/paciente/${rowData.idPaciente}`}
-                            >Atualizar</button>
+                            ><LiaEdit /></button>
                         </>
                     )}
-                    />
+                />
             </DataTable>
         </main>
     );

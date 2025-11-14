@@ -6,6 +6,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { FaTrashAlt } from "react-icons/fa";
+import { LiaEdit } from "react-icons/lia";
 
 // Importa o serviço responsável pelas requisições relacionadas a médicos
 import MedicoRequests from '../../../fetch/MedicoRequests';
@@ -91,10 +92,16 @@ function TabelaMedico(): JSX.Element {
                     headerStyle={{ backgroundColor: '#0A3D62', color: '#ffffff' }}
                     style={{ width: '15%', color: 'var(--font-color)' }}
                     body={(rowData) => (
-                        <button
-                            style={{ width: '100%' }}
-                            onClick={() => deletar(rowData)}
-                        ><FaTrashAlt /></button>
+                        <>
+                            <button
+                                style={{ width: '100%' }}
+                                onClick={() => deletar(rowData)}
+                            ><FaTrashAlt /></button>
+                            <button
+                                style={{ width: '100%' }}
+                                onClick={() => window.location.href = `/atualizar/medico/${rowData.idMedico}`}
+                            ><LiaEdit /></button>
+                        </>
                     )}
                 />
             </DataTable>

@@ -114,7 +114,7 @@ class ConsultaRequests {
 
         try {
             const respostaAPI =
-                await fetch(`${this.serverURL}${this.routeAtualizaConsulta}?idConsulta=${formConsulta.idConsulta}`, {
+                await fetch(`${this.serverURL}/atualizar/consulta/${formConsulta.idConsulta}`, {
                     method: 'PUT',
                     headers: {
                         'Content-type': 'application/json',

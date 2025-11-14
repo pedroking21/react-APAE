@@ -158,7 +158,7 @@ function UpdatePaciente({ idPaciente }: { idPaciente: number }): JSX.Element {
                     />
                 </label>
 
-                <input type="submit" value="ENVIAR" />
+                <input type="submit" value="SALVAR" />
             </form>
         </section>
     );

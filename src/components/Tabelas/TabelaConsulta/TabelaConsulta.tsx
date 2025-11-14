@@ -5,7 +5,6 @@ import { JSX, useEffect, useState } from 'react'; // Hooks do React para trabalh
 import { DataTable } from 'primereact/datatable'; // Componente de tabela da biblioteca PrimeReact
 import { Column } from 'primereact/column'; // Componente de coluna da tabela
 import { Button } from 'primereact/button'; // Componente de botão da PrimeReact
-import { FaTrashAlt } from "react-icons/fa";
 
 
 // Importa o serviço responsável pelas requisições relacionadas a consultas
@@ -15,6 +14,8 @@ import ConsultaRequests from '../../../fetch/ConsultaRequests'; // Classe respon
 import estilo from './TabelaConsulta.module.css'; // Estilos específicos para este componente
 import ConsultaDTO from '../../../interfaces/ConsultaInterface';
 import { APP_ROUTES } from '../../../appConfig';
+import { LiaEdit } from "react-icons/lia";
+import { FaTrashAlt } from "react-icons/fa";
 
 /**
  * Componente que exibe uma tabela com os dados das consultas.
@@ -112,12 +113,12 @@ function TabelaConsulta(): JSX.Element {
                             <button
                                 style={{ width: '100%' }}
                                 onClick={() => deletar(rowData)}
-                            >Deletar</button>
+                            ><FaTrashAlt /></button>
 
                             <button
                                 style={{ width: '100%' }}
                                 onClick={() => window.location.href = `/atualizar/consulta/${rowData.idConsulta}`}
-                            >Atualizar</button>
+                            ><LiaEdit /></button>
                         </>
                     )}
                 />

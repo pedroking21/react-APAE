@@ -13,16 +13,9 @@ import Rodape from "../../../components/Rodape/Rodape";
 // Componente funcional que representa a página de listagem de empréstimos
 function PListaConsultas(): JSX.Element {
     return (
-        <div className="pagina-grid">
-            {/* Renderiza o cabeçalho da página */}
+        <div className="pagina-grid" style={{height: '100%'}}>
             <Cabecalho />
-
-            {/* Renderiza a tabela com a lista de empréstimos */}
             <TabelaConsulta />
-
-    
-
-            {/* Renderiza o rodapé da página */}
             <Rodape />
         </div>
     );

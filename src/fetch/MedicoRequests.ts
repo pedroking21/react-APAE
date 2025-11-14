@@ -7,6 +7,7 @@ import MedicoDTO from "../interfaces/MedicoInterface";
  * Esta classe irá se comunicar com a API para listar, cadastrar, atualizar e remover livros
  */
 class MedicoRequests {
+    [x: string]: any;
 
     private serverURL: string;          // URL base do servidor da API
     private routeListaMedicos: string;   // Rota (endpoint) para buscar a lista de livros
