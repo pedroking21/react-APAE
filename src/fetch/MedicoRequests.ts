@@ -7,7 +7,7 @@ import MedicoDTO from "../interfaces/MedicoInterface";
  * Esta classe irá se comunicar com a API para listar, cadastrar, atualizar e remover livros
  */
 class MedicoRequests {
-    [x: string]: any;
+
 
     private serverURL: string;          // URL base do servidor da API
     private routeListaMedicos: string;   // Rota (endpoint) para buscar a lista de livros
@@ -90,6 +90,35 @@ class MedicoRequests {
             return false;
         }
     }
+
+    async consultaMedico(idMedico: number): Promise<MedicoDTO | null> {
+        const token = localStorage.getItem('token');
+
+        try {
+            console.log('fazendo consulta');
+            const respostaAPI = await fetch(`${this.serverURL}${this.routeListaMedicos}?idMedico=${idMedico}`, {
+                headers: {
+                    'x-access-token': `${token}`
+                }
+            });
+
+            console.log('resposta: ' + JSON.stringify(respostaAPI));
+
+            // Verifica se a resposta foi bem-sucedida (status HTTP 200-299)
+            if (respostaAPI.ok) {
+                // converte a reposta para um JSON
+                const medico: MedicoDTO = await respostaAPI.json();
+                // retorna a resposta
+                return medico;
+            } else {
+                throw new Error("Não foi possível listar os medicos");
+            }
+        } catch (error) {
+            console.error(`Erro ao fazer a consulta de medico: ${error}`);
+            return null;
+        }
+    }
+
     async removerMedico(idMedico: number): Promise<boolean> {
         const token = localStorage.getItem('token'); // recupera o token do localStorage
         try {
@@ -133,8 +162,8 @@ class MedicoRequests {
             return false;
         }
     }
+
 }
-// ...existing code...
 
 // Exporta a classe já com um objeto instanciado para ser usado diretamente
 export default new MedicoRequests();
